@@ -13,9 +13,6 @@ export var in_comfort_zone = true
 signal damaged(by)
 signal killed()
 
-const HP_MAX = 100.0
-var hp = HP_MAX
-
 func _ready() -> void:
 	pass
 
@@ -54,9 +51,8 @@ func calculate_hp(delta: float):
 		# increment hp
 		pass
 	else:
-		take_damage(0.1 * delta)
-	
-	# print("hp=", hp)
+		PlayerData.take_damage(0.1 * delta)
+
 
 func _physics_process(delta: float) -> void:
 	calculate_ui_movement(delta)
@@ -81,21 +77,6 @@ func _physics_process(delta: float) -> void:
 	if dv > gravity * delta * 2:
 		emit_signal("stomped")
 
-
-func take_damage(impact):
-	impact = clamp(impact, 0.0, 1.0)
-	var damage = HP_MAX * impact
-	var prev_hp = hp
-	hp -= damage
-	hp = clamp(hp, 0, HP_MAX)
-
-	if prev_hp != hp:
-		# for damage animation
-		emit_signal("damaged", damage)
-
-	if hp <= 0.0:
-		# for killed animation
-		emit_signal("killed")
 
 func _on_Area2D_body_entered(body: Node) -> void:
 	print(body.name, " exited")
