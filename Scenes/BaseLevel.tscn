@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/ground.png" type="Texture" id=1]
 [ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Actors/SpaceDetector.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Control.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UserInterface/Control.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Actors/Space.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UserInterface/GameData.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Gradient" id=3]
 colors = PoolColorArray( 0.937218, 1, 0.847656, 1, 0.885742, 0.885742, 0.885742, 1 )
@@ -40,6 +41,11 @@ points = PoolVector2Array( 0, 0, 40, 0, 40, 40, 0, 40 )
 
 [node name="BaseLevel" type="Node2D"]
 
+[node name="GameData" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="GameData" parent="GameData" instance=ExtResource( 4 )]
+
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 922, -319.5 )
 scale = Vector2( 0.935547, 681 )
@@ -64,3 +70,5 @@ position = Vector2( -113, 96 )
 [node name="ui" type="CanvasLayer" parent="."]
 
 [node name="Control" parent="ui" instance=ExtResource( 4 )]
+
+[node name="GameData" parent="ui" instance=ExtResource( 6 )]
