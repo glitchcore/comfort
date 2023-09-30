@@ -15,5 +15,12 @@ func _on_SpaceTimer_timeout() -> void:
 		round(detector_position.y - 1)
 	)
 	
+	# go to top-y system
+	detector_position.y *= -1
+	
+	print(detector_position)
+	
+	# go back to bottom-y system
+	detector_position.y *= -1
 	self.clear()
 	self.set_cell(detector_position.x, detector_position.y, 0)
