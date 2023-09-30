@@ -9,7 +9,7 @@ func create_state():
 	var res = []
 	for x in range(SIZE[0]):
 		res.append([])
-		for y in range(SIZE[1]):
+		for _y in range(SIZE[1]):
 			res[x].append(0)
 	return res
 
@@ -88,8 +88,6 @@ const GROW_ACCELERATION = 20
 const SHRINK_ACCELERATION = 5
 
 func _process(delta: float) -> void:
-	var input = Input.get_axis("ui_down", "ui_up")
-	
 	if Input.is_action_just_pressed("ui_up"):
 		target_space_size += SPACE_STEP
 	if Input.is_action_just_pressed("ui_down"):
