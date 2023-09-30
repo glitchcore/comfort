@@ -7,11 +7,7 @@ export var comfort_speed = 1000
 export var gravity = 5000
 export var jump_amount = 2000
 export var acceleration = 8000
-export var in_comfort_zone = true
 
-# for health level
-signal damaged(by)
-signal killed()
 
 func _ready() -> void:
 	pass
@@ -23,7 +19,7 @@ signal stomped
 
 func calculate_ui_movement(delta: float):
 	var input = Input.get_axis("ui_left", "ui_right")
-	input *= comfort_speed if in_comfort_zone else speed
+	input *= comfort_speed if PlayerData.in_comfort_zone else speed
 	
 	var slide_amount = 0
 	if abs(slide_direction.x) > abs(slide_direction.y):
@@ -46,18 +42,10 @@ func calculate_jump():
 		if abs(gravity_direction.y) > 0:
 			velocity.y = 0
 
-func calculate_hp(delta: float):
-	if in_comfort_zone:
-		# increment hp
-		pass
-	else:
-		PlayerData.take_damage(0.1 * delta)
-
 
 func _physics_process(delta: float) -> void:
 	calculate_ui_movement(delta)
 	calculate_jump()
-	calculate_hp(delta)
 	
 	# calculate gravity
 	velocity += gravity * gravity_direction * delta
@@ -80,12 +68,12 @@ func _physics_process(delta: float) -> void:
 
 func _on_Area2D_body_entered(body: Node) -> void:
 	print(body.name, " exited")
-	in_comfort_zone = false
+	PlayerData.in_comfort_zone = false
 
 
 func _on_Area2D_body_exited(body: Node) -> void:
 	print(body.name, " entered")
-	in_comfort_zone = true
+	PlayerData.in_comfort_zone = true
 	
-func _on_Player_killed() -> void:
-	print("U a DIED")
+#func _on_Player_killed() -> void:
+#	print("U a DIED")
