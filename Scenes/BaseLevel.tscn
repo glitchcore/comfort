@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/ground.png" type="Texture" id=1]
 [ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Actors/Space.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UserInterface/GameData.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Actors/Enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Autoload/PlayerData.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Gradient" id=3]
 colors = PoolColorArray( 0.937218, 1, 0.847656, 1, 0.885742, 0.885742, 0.885742, 1 )
@@ -71,3 +72,7 @@ position = Vector2( -113, 96 )
 
 [node name="Enemy" parent="." instance=ExtResource( 7 )]
 position = Vector2( 429, -61 )
+
+[node name="PlayerData" parent="." instance=ExtResource( 8 )]
+
+[connection signal="damaged" from="PlayerData" to="ui/GameData" method="update_interface"]

@@ -8,6 +8,7 @@ export var gravity = 5000
 export var jump_amount = 2000
 export var acceleration = 8000
 
+onready var player_data = get_node("/root/BaseLevel/PlayerData")
 
 func _ready() -> void:
 	pass
@@ -19,7 +20,7 @@ signal stomped
 
 func calculate_ui_movement(delta: float):
 	var input = Input.get_axis("ui_left", "ui_right")
-	input *= comfort_speed if PlayerData.in_comfort_zone else speed
+	input *= comfort_speed if player_data.in_comfort_zone else speed
 	
 	var slide_amount = 0
 	if abs(slide_direction.x) > abs(slide_direction.y):
@@ -68,12 +69,12 @@ func _physics_process(delta: float) -> void:
 
 func _on_Area2D_body_entered(body: Node) -> void:
 	print(body.name, " exited")
-	PlayerData.in_comfort_zone = false
+	player_data.in_comfort_zone = false
 
 
 func _on_Area2D_body_exited(body: Node) -> void:
 	print(body.name, " entered")
-	PlayerData.in_comfort_zone = true
+	player_data.in_comfort_zone = true
 	
 #func _on_Player_killed() -> void:
 #	print("U a DIED")
