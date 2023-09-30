@@ -80,11 +80,28 @@ func _ready() -> void:
 		for y in range(SIZE[1]):
 			self.set_cell(x, -y, 0)
 
+var target_space_size = space_size
+const SPACE_STEP = 2
+const SPACE_MIN = 4
+const SPACE_MAX = 20
+const GROW_ACCELERATION = 20
+const SHRINK_ACCELERATION = 5
+
 func _process(delta: float) -> void:
 	var input = Input.get_axis("ui_down", "ui_up")
 	
-	# if input > 0 and 
+	if Input.is_action_just_pressed("ui_up"):
+		target_space_size += SPACE_STEP
+	if Input.is_action_just_pressed("ui_down"):
+		target_space_size -= SPACE_STEP
 		
+	target_space_size = clamp(target_space_size, SPACE_MIN, SPACE_MAX)
+	space_size = move_toward(
+		space_size,
+		target_space_size,
+		delta * (GROW_ACCELERATION if target_space_size > space_size 
+			else SHRINK_ACCELERATION)
+	)
 
 func _on_SpaceTimer_timeout() -> void:
 	var detector_position = (detector.position - self.position) / self.cell_size
