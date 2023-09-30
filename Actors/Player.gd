@@ -17,6 +17,7 @@ var slide_direction = Vector2(1, 0)
 var gravity_direction = Vector2(0, 1)
 
 signal stomped
+signal is_comfort(value)
 
 func calculate_ui_movement(delta: float):
 	var input = Input.get_axis("ui_left", "ui_right")
@@ -68,13 +69,10 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_Area2D_body_entered(_body: Node) -> void:
-	#print(body.name, " exited")
 	player_data.in_comfort_zone = false
+	emit_signal("is_comfort", player_data.in_comfort_zone)
 
 
 func _on_Area2D_body_exited(_body: Node) -> void:
-	#print(body.name, " entered")
 	player_data.in_comfort_zone = true
-	
-#func _on_Player_killed() -> void:
-#	print("U a DIED")
+	emit_signal("is_comfort", player_data.in_comfort_zone)
