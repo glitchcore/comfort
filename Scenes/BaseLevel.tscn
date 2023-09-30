@@ -59,3 +59,4 @@ position = Vector2( 200, -40 )
 
 [node name="Space" parent="." instance=ExtResource( 5 )]
 position = Vector2( -113, 96 )
+space_size = 6
