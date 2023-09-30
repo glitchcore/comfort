@@ -6,6 +6,13 @@ export var gravity = 5000
 export var jump_amount = 2000
 export var acceleration = 8000
 
+# for health level
+signal damaged(by)
+signal killed()
+
+const HP_MAX = 100.0
+var hp = HP_MAX
+
 func _ready() -> void:
 	pass
 
@@ -62,9 +69,32 @@ func _physics_process(delta: float) -> void:
 		emit_signal("stomped")
 
 
+func take_damage(impact):
+	impact = clamp(impact, 0.0, 1.0)
+	var damage = HP_MAX * impact
+	var prev_hp = hp
+	hp -= damage
+	hp = clamp(hp, 0, HP_MAX)
+
+	if prev_hp != hp:
+		# for damage animation
+		emit_signal("damaged", damage)
+
+	if hp <= 0.0:
+		# for killed animation
+		emit_signal("killed")
+
+
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	print(area.name, " entered")
+	print("hp=", hp)
 
 
 func _on_Area2D_area_exited(area: Area2D) -> void:
 	print(area.name, " exited")
+	take_damage(0.1)
+	print("hp=", hp)
+
+
+func _on_Player_killed() -> void:
+	print("U a DIED")
