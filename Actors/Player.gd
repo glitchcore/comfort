@@ -67,13 +67,13 @@ func _physics_process(delta: float) -> void:
 		emit_signal("stomped")
 
 
-func _on_Area2D_body_entered(body: Node) -> void:
-	print(body.name, " exited")
+func _on_Area2D_body_entered(_body: Node) -> void:
+	#print(body.name, " exited")
 	player_data.in_comfort_zone = false
 
 
-func _on_Area2D_body_exited(body: Node) -> void:
-	print(body.name, " entered")
+func _on_Area2D_body_exited(_body: Node) -> void:
+	#print(body.name, " entered")
 	player_data.in_comfort_zone = true
 	
 #func _on_Player_killed() -> void:

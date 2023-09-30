@@ -5,7 +5,7 @@ extends Node
 signal damaged(by)
 signal killed()
 
-const HP_MAX = 100.0
+const HP_MAX = 100
 var hp = HP_MAX setget set_health
 var in_comfort_zone = true
 
@@ -29,9 +29,8 @@ func set_health(value: float):
 	#in_comfort_zone = true
 
 
-func take_damage(impact):
-	impact = clamp(impact, 0.0, 1.0)
-	var damage = HP_MAX * impact
+func take_damage(impact: int):
+	var damage = HP_MAX * impact / 100
 	var prev_hp = hp
 	hp -= damage
 	hp = clamp(hp, 0, HP_MAX)
@@ -41,6 +40,6 @@ func take_damage(impact):
 		emit_signal("damaged")
 		pass
 
-	if hp <= 0.0:
+	if hp <= 0:
 		# for killed animation
 		emit_signal("killed")
