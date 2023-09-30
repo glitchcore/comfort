@@ -3,7 +3,7 @@ onready var detector = get_node("/root/BaseLevel/SpaceDetector")
 
 const SIZE = [100, 100]
 const UPDATE_SIZE = 10
-export var space_size = 10
+export var space_size = 6
 
 func create_state():
 	var res = []
