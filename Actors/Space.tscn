@@ -10,7 +10,6 @@ cell_size = Vector2( 40, 40 )
 collision_layer = 4
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( -458745, 0, 0, -131019, 0, 0 )
 script = ExtResource( 2 )
 
 [node name="SpaceTimer" type="Timer" parent="."]
