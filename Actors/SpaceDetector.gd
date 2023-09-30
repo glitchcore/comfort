@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 onready var player = get_node("/root/BaseLevel/Player")
-export var speed = 300
+export var speed = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
