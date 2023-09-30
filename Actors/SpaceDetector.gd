@@ -12,4 +12,4 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var move_direction = (player.position - self.position).normalized()
 	
-	move_and_collide(move_direction * speed * delta)
+	var _velocity = move_and_collide(move_direction * speed * delta)

@@ -1,5 +1,5 @@
 extends Camera2D
-export(float, EASE) var DAMP_EASING = 1
+export(float, EASE) var DAMP_EASING = 1.0
 export var duration = 0.2
 export var amplitude = 20
 var shake = false
@@ -15,7 +15,7 @@ func _ready() -> void:
 	set_process(false)
 	set_shake(false)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var t = shake_timer.time_left / shake_timer.wait_time
 	var damping = ease(t, DAMP_EASING) * amplitude
 	
