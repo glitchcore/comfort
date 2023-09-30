@@ -3,6 +3,7 @@ onready var detector = get_node("/root/BaseLevel/SpaceDetector")
 
 const SIZE = [100, 100]
 const UPDATE_SIZE = 10
+export var space_size = 5
 
 func create_state():
 	var res = []
@@ -13,15 +14,22 @@ func create_state():
 	return res
 
 var state = create_state()
+var noise = OpenSimplexNoise.new()
 
-func update_cell(uv, center, old):
-	if uv[0] == center[0]:
+func update_cell(uv: Vector2, center: Vector2, old):
+	var t = Time.get_ticks_msec() / 1000.0
+	var r = Vector2(
+		noise.get_noise_2d(uv.x, t),
+		noise.get_noise_2d(uv.y, t)
+	)
+	
+	if (uv * (Vector2.ONE + r * 0.2) - center).length() < space_size:
 		return 1
 	else:
 		return 0
 
 func update_state(old, center):
-	var new = create_state() # old.duplicate(true)
+	var new = create_state()
 	var x_range = range(
 		max(1, center[0] - UPDATE_SIZE),
 		min(SIZE[0] - 2, center[0] + UPDATE_SIZE)
@@ -34,7 +42,11 @@ func update_state(old, center):
 	for x in x_range:
 		for y in y_range:
 			pass
-			new[x][y] = update_cell([x, y], center, old)
+			new[x][y] = update_cell(
+				Vector2(x, y), # uv
+				Vector2(center.x, center.y), # center
+				old # backbuffer
+			)
 	
 	return new
 
@@ -45,7 +57,9 @@ func display_state():
 				self.set_cell(x, -y, 0)
 
 func _ready() -> void:
-	pass
+	randomize()
+	noise.period = 1
+	noise.seed = randi()
 
 #func _process(delta: float) -> void:
 #	pass
