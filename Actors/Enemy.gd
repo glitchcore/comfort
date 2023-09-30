@@ -15,4 +15,4 @@ func _process(_delta: float) -> void:
 	var _velocity = move_and_slide(Vector2(
 		speed * direction,
 		gravity
-	))
+	), Vector2.UP)
