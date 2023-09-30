@@ -53,6 +53,7 @@ one_shot = true
 position = Vector2( -0.25, -23 )
 shape = SubResource( 4 )
 
+[connection signal="killed" from="." to="." method="_on_Player_killed"]
 [connection signal="stomped" from="." to="MainCamera" method="_on_Player_stomped"]
 [connection signal="timeout" from="MainCamera/ShakeTimer" to="MainCamera" method="_on_ShakeTimer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
