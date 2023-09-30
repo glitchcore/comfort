@@ -69,6 +69,6 @@ position = Vector2( -113, 96 )
 
 [node name="ui" type="CanvasLayer" parent="."]
 
-[node name="Control" parent="ui" instance=ExtResource( 4 )]
-
 [node name="GameData" parent="ui" instance=ExtResource( 6 )]
+
+[node name="Control" parent="ui" instance=ExtResource( 4 )]
