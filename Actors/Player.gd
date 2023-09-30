@@ -5,6 +5,7 @@ export var speed = 1000
 export var gravity = 5000
 export var jump_amount = 2000
 export var acceleration = 8000
+export var in_comfort_zone = true
 
 # for health level
 signal damaged(by)
@@ -46,9 +47,19 @@ func calculate_jump():
 		if abs(gravity_direction.y) > 0:
 			velocity.y = 0
 
+func calculate_hp(delta: float):
+	if in_comfort_zone:
+		# increment hp
+		pass
+	else:
+		take_damage(0.1 * delta)
+	
+	print("hp=", hp)
+
 func _physics_process(delta: float) -> void:
 	calculate_ui_movement(delta)
 	calculate_jump()
+	calculate_hp(delta)
 	
 	# calculate gravity
 	velocity += gravity * gravity_direction * delta
@@ -86,10 +97,12 @@ func take_damage(impact):
 
 func _on_Area2D_body_entered(body: Node) -> void:
 	print(body.name, " entered")
-	print("hp=", hp)
+	in_comfort_zone = true
 
 
 func _on_Area2D_body_exited(body: Node) -> void:
 	print(body.name, " exited")
-	take_damage(0.1)
-	print("hp=", hp)
+	in_comfort_zone = false
+	
+func _on_Player_killed() -> void:
+	print("U a DIED")
