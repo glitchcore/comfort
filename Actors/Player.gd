@@ -84,17 +84,12 @@ func take_damage(impact):
 		# for killed animation
 		emit_signal("killed")
 
-
-func _on_Area2D_area_entered(area: Area2D) -> void:
-	print(area.name, " entered")
+func _on_Area2D_body_entered(body: Node) -> void:
+	print(body.name, " entered")
 	print("hp=", hp)
 
 
-func _on_Area2D_area_exited(area: Area2D) -> void:
-	print(area.name, " exited")
+func _on_Area2D_body_exited(body: Node) -> void:
+	print(body.name, " exited")
 	take_damage(0.1)
 	print("hp=", hp)
-
-
-func _on_Player_killed() -> void:
-	print("U a DIED")
