@@ -54,7 +54,7 @@ func calculate_hp(delta: float):
 	else:
 		take_damage(0.1 * delta)
 	
-	print("hp=", hp)
+	# print("hp=", hp)
 
 func _physics_process(delta: float) -> void:
 	calculate_ui_movement(delta)
