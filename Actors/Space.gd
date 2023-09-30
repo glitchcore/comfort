@@ -1,5 +1,6 @@
 extends TileMap
 onready var detector = get_node("/root/BaseLevel/SpaceDetector")
+onready var space_wall = get_node("/root/BaseLevel/SpaceWall")
 
 const SIZE = [100, 100]
 const UPDATE_SIZE = 20
@@ -68,7 +69,9 @@ func display_state(center):
 		for y in y_range:
 			if state[x][y] < 0.5:
 				self.set_cell(x, -y, 0)
+				space_wall.set_cell(x, -y, -1)
 			else:
+				space_wall.set_cell(x, -y, 0)
 				self.set_cell(x, -y, -1)
 
 func _ready() -> void:
