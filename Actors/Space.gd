@@ -23,10 +23,12 @@ func update_cell(uv: Vector2, center: Vector2, old):
 		noise.get_noise_2d(uv.y, t)
 	)
 	
-	if (uv * (Vector2.ONE + r * 0.2) - center).length() < space_size:
-		return 1
-	else:
-		return 0
+	var res = 0
+	res += clamp(space_size - (uv * (Vector2.ONE + r * 0.2) - center).length(), 0, 1)
+	# res = lerp(res, old[uv.x][uv.y], 0.2)
+	res += old[uv.x][uv.y]
+	
+	return res
 
 func update_state(old, center):
 	var new = create_state()
