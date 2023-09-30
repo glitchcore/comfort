@@ -60,3 +60,11 @@ func _physics_process(delta: float) -> void:
 	
 	if dv > gravity * delta * 2:
 		emit_signal("stomped")
+
+
+func _on_Area2D_area_entered(area: Area2D) -> void:
+	print(area.name, " entered")
+
+
+func _on_Area2D_area_exited(area: Area2D) -> void:
+	print(area.name, " exited")
