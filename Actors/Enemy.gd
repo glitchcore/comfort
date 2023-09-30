@@ -23,6 +23,7 @@ func _process(_delta: float) -> void:
 func _on_Area2D_body_entered(body: Node) -> void:
 	if body.name == "Player":
 		player_data.take_damage(DAMAGE_LEVEL)
+		queue_free()
 
 
 func _on_Player_is_comfort(value) -> void:
