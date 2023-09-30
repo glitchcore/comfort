@@ -4,13 +4,13 @@
 [ext_resource path="res://Actors/Space.gd" type="Script" id=2]
 
 [node name="SpaceMap" type="TileMap"]
-modulate = Color( 1, 0, 0, 0.266667 )
+modulate = Color( 0, 0, 0, 0.407843 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 20, 20 )
 collision_layer = 4
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( -131019, 0, 0 )
+tile_data = PoolIntArray( -458745, 0, 0, -131019, 0, 0 )
 script = ExtResource( 2 )
 
 [node name="SpaceTimer" type="Timer" parent="."]

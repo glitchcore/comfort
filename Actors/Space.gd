@@ -2,8 +2,8 @@ extends TileMap
 onready var detector = get_node("/root/BaseLevel/SpaceDetector")
 
 const SIZE = [100, 100]
-const UPDATE_SIZE = 10
-export var space_size = 5
+const UPDATE_SIZE = 20
+export var space_size = 8
 
 func create_state():
 	var res = []
@@ -24,14 +24,17 @@ func update_cell(uv: Vector2, center: Vector2, old):
 	)
 	
 	var res = 0
-	res += clamp(space_size - (uv * (Vector2.ONE + r * 0.2) - center).length(), 0, 1)
+	res += clamp(space_size - (uv * (Vector2.ONE + r * 0.1) - center).length(), 0, 1)
 	# res = lerp(res, old[uv.x][uv.y], 0.2)
-	res += old[uv.x][uv.y]
+	res += old[uv.x][uv.y] * 0.9
+	
+	res = clamp(res, 0, 1)
 	
 	return res
 
 func update_state(old, center):
 	var new = create_state()
+	
 	var x_range = range(
 		max(1, center[0] - UPDATE_SIZE),
 		min(SIZE[0] - 2, center[0] + UPDATE_SIZE)
@@ -55,7 +58,7 @@ func update_state(old, center):
 func display_state():
 	for x in range(SIZE[0]):
 		for y in range(SIZE[1]):
-			if state[x][y] > 0.5:
+			if state[x][y] < 0.5:
 				self.set_cell(x, -y, 0)
 
 func _ready() -> void:

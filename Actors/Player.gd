@@ -1,7 +1,9 @@
 extends KinematicBody2D
 
 var velocity = Vector2.ZERO
-export var speed = 1000
+export var speed = 100
+export var comfort_speed = 1000
+
 export var gravity = 5000
 export var jump_amount = 2000
 export var acceleration = 8000
@@ -24,7 +26,7 @@ signal stomped
 
 func calculate_ui_movement(delta: float):
 	var input = Input.get_axis("ui_left", "ui_right")
-	input *= speed
+	input *= comfort_speed if in_comfort_zone else speed
 	
 	var slide_amount = 0
 	if abs(slide_direction.x) > abs(slide_direction.y):
@@ -96,13 +98,13 @@ func take_damage(impact):
 		emit_signal("killed")
 
 func _on_Area2D_body_entered(body: Node) -> void:
-	print(body.name, " entered")
-	in_comfort_zone = true
+	print(body.name, " exited")
+	in_comfort_zone = false
 
 
 func _on_Area2D_body_exited(body: Node) -> void:
-	print(body.name, " exited")
-	in_comfort_zone = false
+	print(body.name, " entered")
+	in_comfort_zone = true
 	
 func _on_Player_killed() -> void:
 	print("U a DIED")
