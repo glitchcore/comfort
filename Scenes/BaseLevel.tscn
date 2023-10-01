@@ -138,7 +138,7 @@ cell_size = Vector2( 40, 40 )
 collision_layer = 8
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( -131064, 0, 0, -131054, 0, 0 )
+tile_data = PoolIntArray( -2162675, 0, 0, -2162664, 0, 0, -131064, 0, 0, -131054, 0, 0 )
 
 [node name="SpaceDetector" parent="." instance=ExtResource( 3 )]
 visible = false
@@ -159,7 +159,6 @@ collision_mask = 2
 position = Vector2( 407, -235 )
 shape = SubResource( 6 )
 
-[connection signal="is_comfort" from="Player" to="Enemies/Enemy" method="_on_Player_is_comfort"]
 [connection signal="damaged" from="PlayerData" to="ui/GameData" method="update_interface"]
 [connection signal="killed" from="PlayerData" to="Player" method="_on_PlayerData_killed"]
 [connection signal="body_exited" from="GameAreas/StartArea" to="ui/Tutorial" method="_on_StartArea_body_exited"]

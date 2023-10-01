@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const ENEMY_WALLS = 3 # from 2D physics settings
 
-const DAMAGE_LEVEL = 10
+const DAMAGE_LEVEL = 50
 onready var player_data = get_node("/root/BaseLevel/PlayerData")
 onready var player = get_node("/root/BaseLevel/Player")
 
@@ -13,6 +13,7 @@ export var gravity = 100
 var out_of_comfort = false
 
 func _ready() -> void:
+	player.connect("is_comfort", self, "_on_Player_is_comfort")
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
