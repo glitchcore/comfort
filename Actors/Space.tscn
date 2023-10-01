@@ -28,7 +28,7 @@ float noise(vec2 uv) {
 
 void fragment() {
 	vec3 screen_color = vec3(0.0);
-	const int BLUR_KERNEL = 3;
+	const int BLUR_KERNEL = 1;
 	for(int x = -BLUR_KERNEL; x < BLUR_KERNEL; x++) {
 		for(int y = -BLUR_KERNEL; y < BLUR_KERNEL; y++) {
 			screen_color += texture(
