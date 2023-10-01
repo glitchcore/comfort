@@ -32,7 +32,7 @@ func set_health(value: float):
 
 
 func take_damage(impact: int):
-	var damage = int(HP_MAX * impact / 100)
+	var damage = int(HP_MAX * impact / 100.0)
 	var prev_hp = hp
 	hp -= damage
 	hp = clamp(hp, 0, HP_MAX)
