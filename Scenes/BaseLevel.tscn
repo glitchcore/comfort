@@ -119,6 +119,7 @@ z_index = 10
 position = Vector2( -128, 112 )
 
 [node name="SpaceWall" type="TileMap" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.298039 )
 position = Vector2( -128, 112 )
 tile_set = ExtResource( 9 )
@@ -130,6 +131,7 @@ format = 1
 [node name="PlayerData" parent="." instance=ExtResource( 8 )]
 
 [node name="EnemyWalls" type="TileMap" parent="."]
+visible = false
 modulate = Color( 1, 0, 0, 1 )
 tile_set = ExtResource( 9 )
 cell_size = Vector2( 40, 40 )
@@ -139,6 +141,7 @@ format = 1
 tile_data = PoolIntArray( -131064, 0, 0, -131054, 0, 0 )
 
 [node name="SpaceDetector" parent="." instance=ExtResource( 3 )]
+visible = false
 modulate = Color( 0.423529, 0.109804, 0.109804, 1 )
 position = Vector2( 323, -1450 )
 
