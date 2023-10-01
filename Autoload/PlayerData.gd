@@ -6,15 +6,15 @@ signal damaged(by)
 signal killed()
 
 const HP_MAX = 100
-const BAD_ZONE_DAMAGE = 3
+const BAD_ZONE_DAMAGE = 5
+const GOOD_ZONE_DAMAGE = -3
 var hp = HP_MAX setget set_health
 var in_comfort_zone = true
 
 
 func calculate_hp():
 	if in_comfort_zone:
-		# increment hp
-		pass
+		take_damage(GOOD_ZONE_DAMAGE)
 	else:
 		take_damage(BAD_ZONE_DAMAGE)
 

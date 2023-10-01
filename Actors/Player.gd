@@ -82,4 +82,14 @@ func _on_Area2D_body_exited(_body: Node) -> void:
 
 
 func _on_StartArea_body_exited(_body: Node) -> void:
-	print("AAAAAAAAAAAAAAAAAA")
+	pass
+
+
+func _on_PlayerData_killed() -> void:
+	$ComfortMusic.volume_db = -80
+	$NonComfortMusic.volume_db = 20
+	set_process(false)
+	$MainCamera.duration = 1000
+	$MainCamera.amplitude = 1
+	emit_signal("stomped")
+	print("Player killed")

@@ -9,4 +9,7 @@ func _ready() -> void:
 	update_interface()
 
 func update_interface():
-	health.text = "Health: %s" % player_data.hp
+	if player_data.hp > 0:
+		health.text = "Health: %s" % player_data.hp
+	else:
+		health.text = "You died"
