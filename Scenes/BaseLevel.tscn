@@ -159,23 +159,23 @@ position = Vector2( 2201, -2771 )
 z_index = 10
 
 [node name="Enemy14" parent="Enemies" instance=ExtResource( 7 )]
-position = Vector2( 1098, -3430 )
+position = Vector2( 626, -3404 )
 z_index = 10
 
 [node name="Enemy15" parent="Enemies" instance=ExtResource( 7 )]
-position = Vector2( 1300, -3450 )
+position = Vector2( 1145, -3408 )
 z_index = 10
 
 [node name="Enemy16" parent="Enemies" instance=ExtResource( 7 )]
-position = Vector2( 1542, -3457 )
+position = Vector2( 1599, -3419 )
 z_index = 10
 
 [node name="Enemy17" parent="Enemies" instance=ExtResource( 7 )]
-position = Vector2( 1710, -3457 )
+position = Vector2( 2140, -3427 )
 z_index = 10
 
 [node name="Enemy18" parent="Enemies" instance=ExtResource( 7 )]
-position = Vector2( 1871, -3457 )
+position = Vector2( 2649, -3427 )
 z_index = 10
 
 [node name="Enemy19" parent="Enemies" instance=ExtResource( 7 )]
