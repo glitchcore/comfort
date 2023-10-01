@@ -2,7 +2,7 @@ extends TileMap
 onready var detector = get_node("/root/BaseLevel/SpaceDetector")
 onready var space_wall = get_node("/root/BaseLevel/SpaceWall")
 
-const SIZE = [100, 100]
+const SIZE = [140, 100]
 const UPDATE_SIZE = 20
 export var space_size = 6
 
