@@ -26,7 +26,7 @@ var messages = [
 func update_interface(message):
 	text_label.text = message
 
-func tutorial_step(step_number):
+func tutorial_step():
 	if current_area == messages[step_number][0]:
 		update_interface(messages[step_number][1])
 	else:
@@ -34,7 +34,7 @@ func tutorial_step(step_number):
 
 func _on_Timer_timeout() -> void:
 	if ready_to_next_step:
-		tutorial_step(step_number)
+		tutorial_step()
 		step_number += 1
 
 
