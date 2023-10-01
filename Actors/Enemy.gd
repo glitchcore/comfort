@@ -43,8 +43,8 @@ func _on_Player_is_comfort(value) -> void:
 	
 	if value:
 		self.z_index = 0
-		set_collision_mask_bit(ENEMY_WALLS, true)
+		# set_collision_mask_bit(ENEMY_WALLS, true)
 	else:
 		self.z_index = 5
-		set_collision_mask_bit(ENEMY_WALLS, false)
+		# set_collision_mask_bit(ENEMY_WALLS, false)
 
