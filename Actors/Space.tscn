@@ -34,9 +34,9 @@ void fragment() {
 			screen_color += texture(
 				SCREEN_TEXTURE,
 				SCREEN_UV + vec2(float(x), float(y)) * SCREEN_PIXEL_SIZE * 3. +
-				0.1 * vec2(
-					noise(vec2(SCREEN_UV.x * 3., 2. * sin(time * 4.) * SCREEN_UV.x)),
-					noise(vec2(SCREEN_UV.y * 3., 2. * cos(time * 3.) * SCREEN_UV.y))
+				0.02 * vec2(
+					noise(vec2(sin(SCREEN_UV.x * 10.), 2. * sin(time * 0.2) * SCREEN_UV.x)),
+					noise(vec2(cos(SCREEN_UV.y * 10.), 2. * cos(time * 0.3) * SCREEN_UV.y))
 				)
 				
 			).rgb / float((BLUR_KERNEL * 2 + 1) * (BLUR_KERNEL * 2 + 1));
