@@ -93,10 +93,10 @@ const SHRINK_ACCELERATION = 5
 func _process(delta: float) -> void:
 	self.material.set_shader_param("time", Time.get_ticks_msec() / 1000.0)
 	
-	if Input.is_action_just_pressed("ui_up"):
-		target_space_size += SPACE_STEP
-	if Input.is_action_just_pressed("ui_down"):
-		target_space_size -= SPACE_STEP
+	#if Input.is_action_just_pressed("ui_up"):
+	#	target_space_size += SPACE_STEP
+	# if Input.is_action_just_pressed("ui_down"):
+	#	target_space_size -= SPACE_STEP
 		
 	target_space_size = clamp(target_space_size, SPACE_MIN, SPACE_MAX)
 	space_size = move_toward(
