@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/hat.mp3-974162bd1d7bc76ed275872ae9845a83.mp3str"
+
+[deps]
+
+source_file="res://Assets/audio/hat.mp3"
+dest_files=[ "res://.import/hat.mp3-974162bd1d7bc76ed275872ae9845a83.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

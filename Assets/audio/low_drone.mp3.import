@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/low_drone.mp3-46b1a89b5f88ed16ea44b3abe272b565.mp3str"
+
+[deps]
+
+source_file="res://Assets/audio/low_drone.mp3"
+dest_files=[ "res://.import/low_drone.mp3-46b1a89b5f88ed16ea44b3abe272b565.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

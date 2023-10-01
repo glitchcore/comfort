@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/dirty.mp3-4f7ca0f0b951d6d766fff87e39180fb9.mp3str"
+
+[deps]
+
+source_file="res://Assets/audio/dirty.mp3"
+dest_files=[ "res://.import/dirty.mp3-4f7ca0f0b951d6d766fff87e39180fb9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

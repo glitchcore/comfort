@@ -70,9 +70,12 @@ func _physics_process(delta: float) -> void:
 
 func _on_Area2D_body_entered(_body: Node) -> void:
 	player_data.in_comfort_zone = false
+	$ComfortMusic.volume_db = -80
+	$NonComfortMusic.volume_db = 0
 	emit_signal("is_comfort", player_data.in_comfort_zone)
-
 
 func _on_Area2D_body_exited(_body: Node) -> void:
 	player_data.in_comfort_zone = true
+	$ComfortMusic.volume_db = 0
+	$NonComfortMusic.volume_db = -80
 	emit_signal("is_comfort", player_data.in_comfort_zone)

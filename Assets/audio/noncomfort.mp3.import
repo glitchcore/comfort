@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/noncomfort.mp3-ce639b77258cc8b8e94d687803091a0c.mp3str"
+
+[deps]
+
+source_file="res://Assets/audio/noncomfort.mp3"
+dest_files=[ "res://.import/noncomfort.mp3-ce639b77258cc8b8e94d687803091a0c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

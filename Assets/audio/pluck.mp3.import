@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/pluck.mp3-5f402f15d79421c7e4d2cf5491c321d1.mp3str"
+
+[deps]
+
+source_file="res://Assets/audio/pluck.mp3"
+dest_files=[ "res://.import/pluck.mp3-5f402f15d79421c7e4d2cf5491c321d1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
