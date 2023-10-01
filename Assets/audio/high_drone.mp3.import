@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/high_drone.mp3-68703f7d0cdb97af86ad75d909a4a3e8.mp3str"
+
+[deps]
+
+source_file="res://Assets/audio/high_drone.mp3"
+dest_files=[ "res://.import/high_drone.mp3-68703f7d0cdb97af86ad75d909a4a3e8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

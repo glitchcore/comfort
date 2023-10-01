@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/solo.mp3-729baaab0c800e4f5f963fa537577566.mp3str"
+
+[deps]
+
+source_file="res://Assets/audio/solo.mp3"
+dest_files=[ "res://.import/solo.mp3-729baaab0c800e4f5f963fa537577566.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
