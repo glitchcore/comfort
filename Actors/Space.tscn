@@ -45,8 +45,8 @@ void fragment() {
 	// color += texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
 	
 	COLOR = vec4(vec3(0.), 1.);
-	COLOR.rgb += screen_color * 0.3;
-	COLOR.rgb += vec3(0.2, 0., 0.);
+	COLOR.rgb += screen_color * 0.1;
+	COLOR.rgb += vec3(0.1, 0., 0.);
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
