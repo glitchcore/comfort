@@ -1,10 +1,60 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/BaseTilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://Actors/Space.gd" type="Script" id=2]
 
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float time;
+
+vec2 random(vec2 uv){
+    uv = vec2( dot(uv, vec2(127.1,311.7) ),
+               dot(uv, vec2(269.5,183.3) ) );
+    return -1.0 + 2.0 * fract(sin(uv) * 43758.5453123);
+}
+
+float noise(vec2 uv) {
+    vec2 uv_index = floor(uv);
+    vec2 uv_fract = fract(uv);
+
+    vec2 blur = smoothstep(0.0, 1.0, uv_fract);
+
+    return mix( mix( dot( random(uv_index + vec2(0.0,0.0) ), uv_fract - vec2(0.0,0.0) ),
+                     dot( random(uv_index + vec2(1.0,0.0) ), uv_fract - vec2(1.0,0.0) ), blur.x),
+                mix( dot( random(uv_index + vec2(0.0,1.0) ), uv_fract - vec2(0.0,1.0) ),
+                     dot( random(uv_index + vec2(1.0,1.0) ), uv_fract - vec2(1.0,1.0) ), blur.x), blur.y) + 0.5;
+}
+
+void fragment() {
+	vec3 screen_color = vec3(0.0);
+	const int BLUR_KERNEL = 3;
+	for(int x = -BLUR_KERNEL; x < BLUR_KERNEL; x++) {
+		for(int y = -BLUR_KERNEL; y < BLUR_KERNEL; y++) {
+			screen_color += texture(
+				SCREEN_TEXTURE,
+				SCREEN_UV + vec2(float(x), float(y)) * SCREEN_PIXEL_SIZE * 3. +
+				0.1 * vec2(
+					noise(vec2(SCREEN_UV.x * 3., 2. * sin(time * 4.) * SCREEN_UV.x)),
+					noise(vec2(SCREEN_UV.y * 3., 2. * cos(time * 3.) * SCREEN_UV.y))
+				)
+				
+			).rgb / float((BLUR_KERNEL * 2 + 1) * (BLUR_KERNEL * 2 + 1));
+		}
+	}
+	// color += texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
+	
+	COLOR = vec4(vec3(0.), 1.);
+	COLOR.rgb += screen_color * 0.3;
+	COLOR.rgb += vec3(0.2, 0., 0.);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/time = null
+
 [node name="SpaceMap" type="TileMap"]
-modulate = Color( 0, 0, 0, 0.768627 )
+material = SubResource( 2 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 40, 40 )
 collision_layer = 4
