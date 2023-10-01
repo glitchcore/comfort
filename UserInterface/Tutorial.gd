@@ -29,14 +29,18 @@ func update_interface(message):
 func tutorial_step():
 	if current_area == messages[step_number][0]:
 		update_interface(messages[step_number][1])
+		step_number += 1
 	else:
 		ready_to_next_step = false
 
 func _on_Timer_timeout() -> void:
 	if ready_to_next_step:
 		tutorial_step()
-		step_number += 1
 
 
-func _on_StartArea_body_exited(body: Node) -> void:
-	print(body.name)
+func _on_StartArea_body_exited(_body: Node) -> void:
+	if current_area == WELCOM_AREA:
+		current_area = COMFORT_AREA
+		tutorial_step()
+		ready_to_next_step = true
+	#print(body.name)
