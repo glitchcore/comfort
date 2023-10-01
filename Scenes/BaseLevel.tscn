@@ -139,7 +139,6 @@ position = Vector2( 748, -36 )
 [node name="StartArea" type="Area2D" parent="GameAreas"]
 collision_layer = 32
 collision_mask = 2
-monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameAreas/StartArea"]
 position = Vector2( 397, -228.25 )

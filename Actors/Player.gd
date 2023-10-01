@@ -81,5 +81,5 @@ func _on_Area2D_body_exited(_body: Node) -> void:
 	emit_signal("is_comfort", player_data.in_comfort_zone)
 
 
-func _on_StartArea_body_exited(body: Node) -> void:
-	pass # Включаем возможность выходить из зоны комфорта
+func _on_StartArea_body_exited(_body: Node) -> void:
+	print("AAAAAAAAAAAAAAAAAA")
