@@ -222,6 +222,7 @@ format = 1
 [node name="PlayerData" parent="." instance=ExtResource( 8 )]
 
 [node name="EnemyWalls" type="TileMap" parent="."]
+visible = false
 modulate = Color( 1, 0, 0, 1 )
 tile_set = ExtResource( 9 )
 cell_size = Vector2( 40, 40 )
