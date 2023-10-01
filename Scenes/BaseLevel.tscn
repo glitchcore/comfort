@@ -89,8 +89,8 @@ margin_bottom = 224.0
 visible = false
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 2714, -1394 )
-scale = Vector2( 3.23389, 4390 )
+position = Vector2( 2772.75, -1613 )
+scale = Vector2( 3.29126, 4828 )
 texture = SubResource( 4 )
 
 [node name="Level" type="TileMap" parent="."]
