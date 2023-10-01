@@ -8,7 +8,10 @@ export var gravity = 5000
 export var jump_amount = 2000
 export var acceleration = 8000
 
+var player_alive = true
+
 onready var player_data = get_node("/root/BaseLevel/PlayerData")
+onready var space = get_node("/root/BaseLevel/Space")
 
 func _ready() -> void:
 	pass
@@ -46,6 +49,9 @@ func calculate_jump():
 
 
 func _physics_process(delta: float) -> void:
+	if not player_alive:
+		return
+	
 	calculate_ui_movement(delta)
 	calculate_jump()
 	
@@ -69,12 +75,17 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_Area2D_body_entered(_body: Node) -> void:
+	if not player_alive:
+		return
 	player_data.in_comfort_zone = false
 	$ComfortMusic.volume_db = -80
 	$NonComfortMusic.volume_db = 0
 	emit_signal("is_comfort", player_data.in_comfort_zone)
 
 func _on_Area2D_body_exited(_body: Node) -> void:
+	if not player_alive:
+		return
+	
 	player_data.in_comfort_zone = true
 	$ComfortMusic.volume_db = 0
 	$NonComfortMusic.volume_db = -80
@@ -87,9 +98,6 @@ func _on_StartArea_body_exited(_body: Node) -> void:
 
 func _on_PlayerData_killed() -> void:
 	$ComfortMusic.volume_db = -80
-	$NonComfortMusic.volume_db = 20
-	set_process(false)
-	$MainCamera.duration = 1000
-	$MainCamera.amplitude = 1
-	emit_signal("stomped")
-	print("Player killed")
+	$NonComfortMusic.volume_db = 10
+	player_alive = false
+	space.visible = false
