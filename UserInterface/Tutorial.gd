@@ -36,3 +36,7 @@ func _on_Timer_timeout() -> void:
 	if ready_to_next_step:
 		tutorial_step(step_number)
 		step_number += 1
+
+
+func _on_StartArea_body_exited(body: Node) -> void:
+	print(body.name)

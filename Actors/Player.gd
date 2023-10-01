@@ -79,3 +79,7 @@ func _on_Area2D_body_exited(_body: Node) -> void:
 	$ComfortMusic.volume_db = 0
 	$NonComfortMusic.volume_db = -80
 	emit_signal("is_comfort", player_data.in_comfort_zone)
+
+
+func _on_StartArea_body_exited(body: Node) -> void:
+	pass # Включаем возможность выходить из зоны комфорта
