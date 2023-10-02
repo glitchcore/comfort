@@ -270,6 +270,7 @@ position = Vector2( 2885.53, -561.438 )
 shape = SubResource( 6 )
 
 [node name="UncomfortArea" type="Area2D" parent="GameAreas"]
+visible = false
 position = Vector2( -4.74976, -1058 )
 collision_layer = 32
 collision_mask = 2
