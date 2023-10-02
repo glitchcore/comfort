@@ -89,61 +89,6 @@ margin_bottom = 224.0
 [node name="Tutorial" parent="ui" instance=ExtResource( 4 )]
 visible = false
 
-[node name="TutorialStatic" type="Node" parent="."]
-
-[node name="Label1" type="Label" parent="TutorialStatic"]
-margin_left = 391.0
-margin_top = -305.0
-margin_right = 582.0
-margin_bottom = -287.0
-rect_scale = Vector2( 2, 2 )
-custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
-text = "You are in the comfort zone"
-
-[node name="Label2" type="Label" parent="TutorialStatic"]
-margin_left = 496.0
-margin_top = -249.0
-margin_right = 687.0
-margin_bottom = -231.0
-rect_scale = Vector2( 2, 2 )
-custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
-text = "Press <- and -> to move"
-
-[node name="Label3" type="Label" parent="TutorialStatic"]
-margin_left = 675.0
-margin_top = -199.0
-margin_right = 866.0
-margin_bottom = -181.0
-rect_scale = Vector2( 2, 2 )
-custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
-text = "Press space to jump"
-
-[node name="CanvasLayer" type="CanvasLayer" parent="TutorialStatic"]
-
-[node name="GreenArrow" type="Sprite" parent="TutorialStatic/CanvasLayer"]
-position = Vector2( 842, -92.5 )
-rotation = -3.14159
-scale = Vector2( 0.21875, 0.0922302 )
-texture = ExtResource( 13 )
-
-[node name="LabelGame" type="Label" parent="TutorialStatic/CanvasLayer"]
-margin_left = 322.0
-margin_top = -101.0
-margin_right = 397.0
-margin_bottom = -83.0
-rect_scale = Vector2( 2, 2 )
-custom_colors/font_color = Color( 0.141176, 0.0313726, 0.482353, 1 )
-text = "go to game"
-
-[node name="LabelTutorial" type="Label" parent="TutorialStatic/CanvasLayer"]
-margin_left = 738.0
-margin_top = -104.0
-margin_right = 813.0
-margin_bottom = -86.0
-rect_scale = Vector2( 2, 2 )
-custom_colors/font_color = Color( 0.141176, 0.0313726, 0.482353, 1 )
-text = "go tutorial"
-
 [node name="Level" type="TileMap" parent="."]
 position = Vector2( 160, -600 )
 tile_set = SubResource( 2 )
@@ -322,6 +267,61 @@ position = Vector2( 2800, -1656 )
 scale = Vector2( 3.29126, 4828 )
 z_index = -10
 texture = SubResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GreenArrow" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 842, -92.5 )
+rotation = -3.14159
+scale = Vector2( 0.21875, 0.0922302 )
+texture = ExtResource( 13 )
+
+[node name="LabelGame" type="Label" parent="CanvasLayer"]
+margin_left = 322.0
+margin_top = -101.0
+margin_right = 397.0
+margin_bottom = -83.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0.141176, 0.0313726, 0.482353, 1 )
+text = "go to game"
+
+[node name="LabelTutorial" type="Label" parent="CanvasLayer"]
+margin_left = 738.0
+margin_top = -104.0
+margin_right = 813.0
+margin_bottom = -86.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0.141176, 0.0313726, 0.482353, 1 )
+text = "go tutorial"
+
+[node name="TutorialStatic" type="Node" parent="."]
+
+[node name="Label1" type="Label" parent="TutorialStatic"]
+margin_left = 391.0
+margin_top = -305.0
+margin_right = 582.0
+margin_bottom = -287.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
+text = "You are in the comfort zone"
+
+[node name="Label2" type="Label" parent="TutorialStatic"]
+margin_left = 496.0
+margin_top = -249.0
+margin_right = 687.0
+margin_bottom = -231.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
+text = "Press <- and -> to move"
+
+[node name="Label3" type="Label" parent="TutorialStatic"]
+margin_left = 675.0
+margin_top = -199.0
+margin_right = 866.0
+margin_bottom = -181.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
+text = "Press space to jump"
 
 [connection signal="is_comfort" from="Player" to="Space" method="_on_Player_is_comfort"]
 [connection signal="damaged" from="PlayerData" to="ui/GameData" method="update_interface"]
