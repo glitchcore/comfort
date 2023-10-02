@@ -66,8 +66,7 @@ visible = false
 position = Vector2( 0, -23 )
 shape = SubResource( 4 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "enemy_run"
+[node name="Animation" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 5 )
 anims/enemy_run = SubResource( 6 )
 

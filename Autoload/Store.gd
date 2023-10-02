@@ -5,15 +5,24 @@ signal update_comfort(value)
 signal killed
 signal force_move(new_position)
 
+# game config
 const START_GAME_POSITION = Vector2(241, -2397)
 
 const HP_MAX = 100
 const BAD_ZONE_DAMAGE = 2
 const GOOD_ZONE_DAMAGE = -1
 const ENEMY_DAMAGE_LEVEL = 50
+
+# game globals
+export var space_speed = 0.5
+
+# game state
 var hp = HP_MAX setget set_health
 var in_comfort_zone = true
 var player_alive = true
+
+func get_space_speed():
+	return space_speed
 
 func calculate_hp():
 	if in_comfort_zone:
