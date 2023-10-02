@@ -6,6 +6,9 @@ const SIZE = [140, 100]
 const UPDATE_SIZE = 20
 export var space_size = 6
 
+var comfort_amount = 0
+var target_comfort_amount = 0
+
 func create_state():
 	var res = []
 	for x in range(SIZE[0]):
@@ -92,6 +95,12 @@ const SHRINK_ACCELERATION = 5
 
 func _process(delta: float) -> void:
 	self.material.set_shader_param("time", Time.get_ticks_msec() / 1000.0)
+	comfort_amount = move_toward(
+		comfort_amount,
+		target_comfort_amount,
+		delta * 8
+	)
+	self.material.set_shader_param("comfort_amount", comfort_amount)
 	
 	#if Input.is_action_just_pressed("ui_up"):
 	#	target_space_size += SPACE_STEP
@@ -115,5 +124,8 @@ func _on_SpaceTimer_timeout() -> void:
 	detector_position.y *= -1
 	state = update_state(state, detector_position)
 	
-	# self.clear()
 	display_state(detector_position)
+
+
+func _on_Player_is_comfort(value) -> void:
+	target_comfort_amount = 1.0 if value else 0.0
