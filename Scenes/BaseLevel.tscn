@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Assets/ground.png" type="Texture" id=1]
 [ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=2]
@@ -71,7 +71,10 @@ points = PoolVector2Array( 0, 0, 40, 0, 40, 40, 0, 40 )
 1/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 2873.62, 312.438 )
+extents = Vector2( 2832.61, 312.438 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 354, 261.125 )
 
 [sub_resource type="CircleShape2D" id=7]
 radius = 118.186
@@ -99,7 +102,7 @@ margin_top = 2.0
 margin_bottom = 38.6
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 2465, -2235 )
+position = Vector2( 2770, -2235 )
 scale = Vector2( 3.29126, 5757 )
 z_index = -10
 z_as_relative = false
@@ -263,8 +266,17 @@ collision_layer = 32
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameAreas/StartArea"]
-position = Vector2( 2866.12, -561.438 )
+position = Vector2( 2885.53, -561.438 )
 shape = SubResource( 6 )
+
+[node name="UncomfortArea" type="Area2D" parent="GameAreas"]
+position = Vector2( -4.74976, -1058 )
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameAreas/UncomfortArea"]
+position = Vector2( 5365.75, -8.125 )
+shape = SubResource( 9 )
 
 [node name="WinArea" type="Area2D" parent="GameAreas"]
 position = Vector2( -4.74976, -1058 )
@@ -320,7 +332,7 @@ rotation = 4.71239
 position = Vector2( 5317, -855 )
 
 [node name="Arrow10" parent="TutorialStatic" instance=ExtResource( 13 )]
-position = Vector2( 4515, -860 )
+position = Vector2( 4661, -898 )
 
 [node name="Arrow11" parent="TutorialStatic" instance=ExtResource( 13 )]
 position = Vector2( 3895, -1092 )
@@ -414,19 +426,19 @@ align = 1
 valign = 1
 
 [node name="Label7" type="Label" parent="TutorialStatic"]
-margin_left = 3814.0
-margin_top = -1019.0
-margin_right = 4044.0
-margin_bottom = -988.0
+margin_left = 5175.0
+margin_top = -965.0
+margin_right = 5405.0
+margin_bottom = -934.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "...not for long"
 
 [node name="Label8" type="Label" parent="TutorialStatic"]
-margin_left = 2485.0
-margin_top = -1143.0
-margin_right = 2610.0
-margin_bottom = -1112.0
+margin_left = 2248.0
+margin_top = -1050.0
+margin_right = 2373.0
+margin_bottom = -1019.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "And now"
