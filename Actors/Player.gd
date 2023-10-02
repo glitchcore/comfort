@@ -17,6 +17,7 @@ func _ready() -> void:
 	store.connect("force_move", self, "_on_ForceMove")
 	store.connect("killed", self, "_on_Killed")
 	store.connect("update_comfort", self, "_on_Player_comfort")
+	store.connect("win", self, "_on_Win")
 	var _r = connect("update_comfort", store, "_on_UpdateComfort")
 
 var slide_direction = Vector2(1, 0)
@@ -98,6 +99,10 @@ func _on_Space_exited(_body: Node) -> void:
 func _on_Killed() -> void:
 	$ComfortMusic.volume_db = -80
 	$NonComfortMusic.volume_db = 10
+	
+func _on_Win():
+	$ComfortMusic.volume_db = 0
+	$NonComfortMusic.volume_db = -80
 
 func _on_ForceMove(new_position) -> void:
 	print("player going to new position")

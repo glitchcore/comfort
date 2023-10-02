@@ -10,6 +10,7 @@ signal update_hp(value, damage)
 signal update_comfort(value)
 signal killed
 signal force_move(new_position)
+signal win
 
 # game config
 const START_GAME_POSITION = Vector2(241, -2397)
@@ -17,7 +18,7 @@ const START_GAME_POSITION = Vector2(241, -2397)
 const HP_MAX = 100
 const BAD_ZONE_DAMAGE = 2
 const GOOD_ZONE_DAMAGE = -1
-const ENEMY_DAMAGE_LEVEL = 50
+const ENEMY_DAMAGE_LEVEL = 0
 const ZONE_HP_THRESHOLD = 20
 
 # game globals
@@ -120,3 +121,7 @@ func _on_UncomfortArea_body_entered(_body: Node) -> void:
 
 func _on_UncomfortArea_body_exited(_body: Node) -> void:
 	space_mode = SPACE_NORMAL
+
+func _on_WinArea_body_entered() -> void:
+	emit_signal("win")
+	player_alive = false

@@ -1,7 +1,7 @@
 extends Camera2D
 export(float, EASE) var DAMP_EASING = 1.0
 export var duration = 0.2
-export var amplitude = 20
+export var amplitude = 10
 var shake = false
 
 var noise = OpenSimplexNoise.new()
@@ -11,7 +11,7 @@ onready var shake_timer = $ShakeTimer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize()
-	noise.period = 0.1
+	noise.period = 0.5
 	set_process(false)
 	set_shake(false)
 

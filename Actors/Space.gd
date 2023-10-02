@@ -21,6 +21,7 @@ func _ready() -> void:
 			self.set_cell(x, -y, 0)
 			
 	store.connect("killed", self, "_on_Killed")
+	store.connect("win", self, "_on_Win")
 
 func create_state():
 	var res = []
@@ -134,4 +135,7 @@ func _on_SpaceTimer_timeout() -> void:
 	display_state(detector_position)
 	
 func _on_Killed():
+	self.visible = false
+
+func _on_Win():
 	self.visible = false
