@@ -6,6 +6,7 @@ const HELLO_AREA = -1
 const WELCOM_AREA = 0
 const COMFORT_AREA = 1
 const UNCOMFORT_AREA = 2
+const ENEMY_AREA = 3
 
 var ready_to_next_step = true
 var step_number = 0
@@ -17,10 +18,15 @@ var messages = [
 	[WELCOM_AREA, "Press <- and -> to move"],
 	[WELCOM_AREA, "Press space to jump"],
 	[WELCOM_AREA, ""],
-	[COMFORT_AREA, "Your comfort zone follow you"],
-	[COMFORT_AREA, "...almost forewer"],
+	[COMFORT_AREA, "Your comfort zone follow you..."],
+	[COMFORT_AREA, "...ALMOST forewer"],
 	[COMFORT_AREA, ""],
-	[UNCOMFORT_AREA, "NOT SHOW THIS"]
+	[UNCOMFORT_AREA, "Sometimes you have to leave comfort zone..."],
+	[UNCOMFORT_AREA, "...not for long"],
+	[UNCOMFORT_AREA, ""],
+	[ENEMY_AREA, "And now"],
+	[ENEMY_AREA, "ENEMIES!"],
+	[ENEMY_AREA, ""]
 ]
 
 func update_interface(message):
