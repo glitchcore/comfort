@@ -9,6 +9,7 @@ export var jump_amount = 2000
 export var acceleration = 8000
 
 var player_alive = true
+var start_game = Vector2(241, -2397)
 
 onready var player_data = get_node("/root/BaseLevel/PlayerData")
 onready var space = get_node("/root/BaseLevel/Space")
@@ -102,3 +103,8 @@ func _on_PlayerData_killed() -> void:
 	$NonComfortMusic.volume_db = 10
 	player_alive = false
 	space.visible = false
+
+
+func _on_PortalToGame_body_entered(body: Node) -> void:
+	print("AAAAAAAAAAAAAAAAA")
+	position = start_game
