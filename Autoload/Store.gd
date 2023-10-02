@@ -14,11 +14,12 @@ signal win
 
 # game config
 const START_GAME_POSITION = Vector2(241, -2397)
+#const WIN_GAME_POSITION = Vector2(465, -2815)
 
 const HP_MAX = 100
 const BAD_ZONE_DAMAGE = 2
 const GOOD_ZONE_DAMAGE = -1
-const ENEMY_DAMAGE_LEVEL = 0
+const ENEMY_DAMAGE_LEVEL = 50
 const ZONE_HP_THRESHOLD = 20
 
 # game globals
