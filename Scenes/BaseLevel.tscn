@@ -447,6 +447,8 @@ margin_top = -1752.0
 margin_right = 3172.0
 margin_bottom = -1721.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "You are in the comfort zone"
 
@@ -456,6 +458,8 @@ margin_top = -1550.0
 margin_right = 682.0
 margin_bottom = -1519.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "Press < and > to move"
 
@@ -465,6 +469,8 @@ margin_top = -1539.0
 margin_right = 2187.0
 margin_bottom = -1508.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "Press space to jump"
 
@@ -474,6 +480,8 @@ margin_top = -1737.0
 margin_right = 4356.0
 margin_bottom = -1706.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "Your comfort zone follows you..."
 
@@ -483,6 +491,8 @@ margin_top = -1880.0
 margin_right = 5120.0
 margin_bottom = -1849.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "...ALMOST forewer"
 
@@ -492,6 +502,8 @@ margin_top = -1664.0
 margin_right = 5696.0
 margin_bottom = -1565.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "Sometimes you
 have to leave
@@ -505,6 +517,8 @@ margin_top = -1030.0
 margin_right = 4982.0
 margin_bottom = -999.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "...not for long"
 
@@ -514,6 +528,8 @@ margin_top = -1089.0
 margin_right = 3962.0
 margin_bottom = -1024.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "Enemies achead!
 Stay in comfort zone!"
@@ -524,6 +540,8 @@ margin_top = -1091.0
 margin_right = 3156.0
 margin_bottom = -1026.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "Move slowly - 
 enemy stays out of zone"
@@ -534,6 +552,8 @@ margin_top = -1073.0
 margin_right = 2352.0
 margin_bottom = -1008.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "Enemy inside zone dosen't hert you
 Push enemy to kill it"
@@ -544,6 +564,8 @@ margin_top = -1070.0
 margin_right = 1572.0
 margin_bottom = -1005.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "Be careful out of comfort zone!"
 
