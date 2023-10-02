@@ -1,35 +1,133 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://Actors/MainCamera.gd" type="Script" id=2]
 [ext_resource path="res://Autoload/PlayerData.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/audio/comfort.mp3" type="AudioStream" id=4]
 [ext_resource path="res://Assets/audio/noncomfort.mp3" type="AudioStream" id=5]
-[ext_resource path="res://Assets/player.png" type="Texture" id=6]
+[ext_resource path="res://Assets/svg_sources/player_simple.png" type="Texture" id=6]
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 17.5, 15 )
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 11.8, 26 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 16.25, 13 )
+extents = Vector2( 27, 23 )
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("PlayerSimple:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0.447552, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("PlayerSimple:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.442826, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("PlayerSimple:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("PlayerSimple:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( -24.44, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PlayerSimple:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, -27.44 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("PlayerSimple:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.447552, 0.442826 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "player_walk"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSimple:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 2.37841, 2.2974, 2.37841 ),
+"update": 0,
+"values": [ Vector2( 0.5, -26.44 ), Vector2( 0.5, -25.44 ), Vector2( 0.5, -26.44 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerSimple:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 2.2974, 2.37841, 2.37841 ),
+"update": 0,
+"values": [ Vector2( 0.448, 0.443 ), Vector2( 0.448, 0.4 ), Vector2( 0.448, 0.443 ) ]
+}
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 1 )
 
-[node name="PlayerData" parent="." instance=ExtResource( 3 )]
-
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -1, -14 )
-scale = Vector2( 0.22549, 0.252526 )
+[node name="PlayerSimple" type="Sprite" parent="."]
+position = Vector2( 0.5, -24.44 )
+scale = Vector2( 0.447552, 0.442826 )
 texture = ExtResource( 6 )
 
+[node name="PlayerData" parent="." instance=ExtResource( 3 )]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.5, -15 )
-shape = SubResource( 3 )
+visible = false
+position = Vector2( 0.5, -26 )
+scale = Vector2( 2.5, 1 )
+shape = SubResource( 5 )
 
 [node name="MainCamera" type="Camera2D" parent="."]
+visible = false
 current = true
 limit_left = -10000
 limit_top = -10000
@@ -46,11 +144,12 @@ script = ExtResource( 2 )
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -0.25, -15 )
+position = Vector2( 1, -25 )
 shape = SubResource( 4 )
 
 [node name="ComfortMusic" type="AudioStreamPlayer" parent="."]
@@ -61,6 +160,11 @@ autoplay = true
 stream = ExtResource( 5 )
 volume_db = -80.0
 autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "player_walk"
+anims/RESET = SubResource( 6 )
+anims/player_walk = SubResource( 7 )
 
 [connection signal="stomped" from="." to="MainCamera" method="_on_Player_stomped"]
 [connection signal="timeout" from="MainCamera/ShakeTimer" to="MainCamera" method="_on_ShakeTimer_timeout"]
