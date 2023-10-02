@@ -6,6 +6,7 @@
 extents = Vector2( 20, 44.5 )
 
 [node name="Area2D" type="Area2D"]
+collision_mask = 2
 
 [node name="Portal" type="Sprite" parent="."]
 position = Vector2( -4.71115e-06, -54 )
