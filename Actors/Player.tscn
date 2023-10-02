@@ -143,12 +143,12 @@ script = ExtResource( 2 )
 [node name="ShakeTimer" type="Timer" parent="MainCamera"]
 one_shot = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="SpaceCollision" type="Area2D" parent="."]
 visible = false
 collision_layer = 2
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceCollision"]
 position = Vector2( 1, -25 )
 shape = SubResource( 4 )
 
@@ -168,5 +168,5 @@ anims/player_walk = SubResource( 7 )
 
 [connection signal="stomped" from="." to="MainCamera" method="_on_Player_stomped"]
 [connection signal="timeout" from="MainCamera/ShakeTimer" to="MainCamera" method="_on_ShakeTimer_timeout"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="SpaceCollision" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="SpaceCollision" to="." method="_on_Area2D_body_exited"]
