@@ -10,7 +10,7 @@ func _ready() -> void:
 	update_hp(store.hp, 0)
 
 func update_hp(hp, damage):
-	if damage < 0:
+	if damage < 0 or hp == 100:
 		$Health.set("custom_colors/font_color", Color("45b108"))
 	elif damage == 0:
 		$Health.set("custom_colors/font_color", Color("cbcc0a"))
@@ -18,7 +18,7 @@ func update_hp(hp, damage):
 		$Health.set("custom_colors/font_color", Color("eb1616"))
 		
 	if hp > 0:
-		$Health.text = ("-" if damage > 0 else " ") + "Health: %s" % hp
+		$Health.text = "Health: %s" % hp
 	else:
 		$Health.text = "You died\nPress jump to play again"
 

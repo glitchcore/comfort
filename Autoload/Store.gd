@@ -22,7 +22,7 @@ const ZONE_HP_THRESHOLD = 20
 
 # game globals
 export var space_speed = 2
-export var space_threshold = 500
+export var space_threshold = 700
 export var player_speed = 1000
 export var player_comfort_speed = 300
 export var jump_amount = 2000
@@ -65,6 +65,8 @@ func calculate_hp():
 	else:
 		if hp > ZONE_HP_THRESHOLD:
 			take_damage(BAD_ZONE_DAMAGE)
+		else:
+			take_damage(0)
 
 func _physics_process(_delta: float) -> void:
 	if not player_alive:
@@ -83,8 +85,7 @@ func take_damage(impact: int):
 	hp -= damage
 	hp = clamp(hp, 0, HP_MAX)
 	
-	if prev_hp != hp:
-		emit_signal("update_hp", hp, damage)
+	emit_signal("update_hp", hp, damage)
 
 	if hp <= 0:
 		# for killed animation
