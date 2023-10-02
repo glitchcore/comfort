@@ -102,7 +102,7 @@ margin_top = 2.0
 margin_bottom = 38.6
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 2991, -1745 )
+position = Vector2( 2978, -1727 )
 scale = Vector2( 3.29126, 5757 )
 z_index = -10
 z_as_relative = false
@@ -389,7 +389,7 @@ position = Vector2( 2540, -946 )
 position = Vector2( 920, -1047 )
 
 [node name="Arrow17" parent="TutorialStatic" instance=ExtResource( 13 )]
-position = Vector2( 284, -827 )
+position = Vector2( 284, -927 )
 rotation = -1.5708
 
 [node name="LabelGame" type="Label" parent="TutorialStatic"]
@@ -412,6 +412,16 @@ custom_colors/font_color = Color( 0.141176, 0.0313726, 0.482353, 1 )
 custom_colors/font_outline_modulate = Color( 0.976471, 0.960784, 0.960784, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "go tutorial"
+
+[node name="LabelTutorial2" type="Label" parent="TutorialStatic"]
+margin_left = 229.0
+margin_top = -1000.0
+margin_right = 398.0
+margin_bottom = -969.0
+custom_colors/font_color = Color( 0.141176, 0.0313726, 0.482353, 1 )
+custom_colors/font_outline_modulate = Color( 0.976471, 0.960784, 0.960784, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "end of tutorial"
 
 [node name="Label1" type="Label" parent="TutorialStatic"]
 margin_left = 2768.0
