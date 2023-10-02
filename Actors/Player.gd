@@ -5,8 +5,11 @@ signal update_comfort(value)
 var velocity = Vector2.ZERO
 
 export var gravity = 5000
-export var jump_amount = 2000
 export var acceleration = 8000
+
+var comfort_amount = 1.0
+var target_comfort_amount = 1.0
+export var comfort_amount_acceleration = 3.0
 
 onready var store = get_node("/root/BaseLevel/Store")
 
@@ -35,7 +38,7 @@ func calculate_ui_movement(delta: float):
 # calculate jump is anti-gravity action
 func calculate_jump():
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity += -gravity_direction * jump_amount
+		velocity += -gravity_direction * store.jump_amount
 		
 	# interrupted jump
 	if Input.is_action_just_released("jump"):
@@ -50,6 +53,14 @@ func _physics_process(delta: float) -> void:
 	
 	calculate_ui_movement(delta)
 	calculate_jump()
+	
+	comfort_amount = move_toward(
+		comfort_amount,
+		target_comfort_amount,
+		delta * comfort_amount_acceleration
+	)
+	$ComfortMusic.volume_db = (1 - comfort_amount) * -80
+	$NonComfortMusic.volume_db = (comfort_amount) * -80
 	
 	# calculate gravity
 	velocity += gravity * gravity_direction * delta
@@ -76,12 +87,7 @@ func _physics_process(delta: float) -> void:
 		$MainCamera.set_shake(true)
 
 func _on_Player_comfort(comfort):
-	if comfort:
-		$ComfortMusic.volume_db = 0
-		$NonComfortMusic.volume_db = -80
-	else:
-		$ComfortMusic.volume_db = -80
-		$NonComfortMusic.volume_db = 0
+	target_comfort_amount = 1 if comfort else 0
 	
 func _on_Space_entered(_body: Node) -> void:
 	emit_signal("update_comfort", false)

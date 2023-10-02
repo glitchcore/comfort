@@ -6,7 +6,7 @@ onready var store = get_node("/root/BaseLevel/Store")
 const SIZE = [160, 100]
 const UPDATE_SIZE = 20
 export var space_size = 5
-export var noise_amount = 0.05
+export var noise_amount = 0.03
 
 var comfort_amount = 0
 var target_comfort_amount = 0
