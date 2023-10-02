@@ -15,6 +15,8 @@ const ENEMY_DAMAGE_LEVEL = 50
 
 # game globals
 export var space_speed = 0.5
+export var player_speed = 1000
+export var player_comfort_speed = 300
 
 # game state
 var hp = HP_MAX setget set_health
@@ -24,6 +26,12 @@ var player_alive = true
 func get_space_speed():
 	return space_speed
 
+func get_player_speed():
+	return (
+		player_comfort_speed if in_comfort_zone
+		else player_speed
+	)
+	
 func calculate_hp():
 	if in_comfort_zone:
 		take_damage(GOOD_ZONE_DAMAGE)
