@@ -16,7 +16,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-PlayerData="*res://Autoload/PlayerData.tscn"
+PlayerData="*res://Autoload/Store.tscn"
 
 [display]
 

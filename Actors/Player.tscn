@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://Actors/MainCamera.gd" type="Script" id=2]
-[ext_resource path="res://Autoload/PlayerData.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Autoload/Store.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/audio/comfort.mp3" type="AudioStream" id=4]
 [ext_resource path="res://Assets/audio/noncomfort.mp3" type="AudioStream" id=5]
 [ext_resource path="res://Assets/svg_sources/player_simple.png" type="Texture" id=6]
@@ -166,7 +166,6 @@ autoplay = "player_walk"
 anims/RESET = SubResource( 6 )
 anims/player_walk = SubResource( 7 )
 
-[connection signal="stomped" from="." to="MainCamera" method="_on_Player_stomped"]
 [connection signal="timeout" from="MainCamera/ShakeTimer" to="MainCamera" method="_on_ShakeTimer_timeout"]
-[connection signal="body_entered" from="SpaceCollision" to="." method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="SpaceCollision" to="." method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="SpaceCollision" to="." method="_on_Space_entered"]
+[connection signal="body_exited" from="SpaceCollision" to="." method="_on_Space_exited"]

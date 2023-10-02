@@ -27,9 +27,6 @@ func _process(_delta: float) -> void:
 func _on_ShakeTimer_timeout() -> void:
 	set_shake(false)
 
-func _on_Player_stomped() -> void:
-	set_shake(true)
-	
 func set_shake(value):
 	shake = value
 	offset = Vector2.ZERO
