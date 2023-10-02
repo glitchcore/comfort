@@ -1,6 +1,6 @@
 extends Node
 
-signal update_hp(value)
+signal update_hp(value, damage)
 signal update_comfort(value)
 signal killed
 signal force_move(new_position)
@@ -39,7 +39,7 @@ func take_damage(impact: int):
 	hp = clamp(hp, 0, HP_MAX)
 	
 	if prev_hp != hp:
-		emit_signal("update_hp", hp)
+		emit_signal("update_hp", hp, damage)
 
 	if hp <= 0:
 		# for killed animation
