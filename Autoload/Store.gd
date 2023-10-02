@@ -11,6 +11,7 @@ signal update_comfort(value)
 signal killed
 signal force_move(new_position)
 signal win
+signal enemy_damage
 
 # game config
 const START_GAME_POSITION = Vector2(241, -2397)
@@ -108,6 +109,7 @@ func _on_UpdateComfort(comfort):
 	emit_signal("update_comfort", comfort)
 	
 func on_EnemyCollide():
+	emit_signal("enemy_damage")
 	if not in_comfort_zone:
 		take_damage(ENEMY_DAMAGE_LEVEL)
 

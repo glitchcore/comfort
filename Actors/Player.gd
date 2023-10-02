@@ -14,6 +14,7 @@ export var comfort_amount_acceleration = 3.0
 onready var store = get_node("/root/BaseLevel/Store")
 
 func _ready() -> void:
+	store.connect("enemy_damage", self, "_on_EnemyDamage")
 	store.connect("force_move", self, "_on_ForceMove")
 	store.connect("killed", self, "_on_Killed")
 	store.connect("update_comfort", self, "_on_Player_comfort")
@@ -107,3 +108,21 @@ func _on_Win():
 func _on_ForceMove(new_position) -> void:
 	print("player going to new position")
 	position = new_position
+
+var play_position = 0.0
+
+func _on_EnemyDamage():
+	if store.in_comfort_zone:
+		$Solo.play(play_position)
+	else:
+		$Kick.play(play_position)
+	$SoundTimer.start()
+		
+	play_position += 1.0
+	if play_position > 9:
+		play_position = 0.0
+	
+	
+func _on_SoundTimer_timeout() -> void:
+	$Kick.stop()
+	$Solo.stop()

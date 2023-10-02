@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://Actors/MainCamera.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Assets/audio/comfort.mp3" type="AudioStream" id=4]
 [ext_resource path="res://Assets/audio/noncomfort.mp3" type="AudioStream" id=5]
 [ext_resource path="res://Assets/svg_sources/player_simple.png" type="Texture" id=6]
+[ext_resource path="res://Assets/audio/kick.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Assets/audio/solo.mp3" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 11.8, 26 )
@@ -166,6 +168,18 @@ autoplay = "player_walk"
 anims/RESET = SubResource( 6 )
 anims/player_walk = SubResource( 7 )
 
+[node name="Kick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="Solo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+volume_db = 6.0
+
+[node name="SoundTimer" type="Timer" parent="."]
+wait_time = 0.9
+one_shot = true
+
 [connection signal="timeout" from="MainCamera/ShakeTimer" to="MainCamera" method="_on_ShakeTimer_timeout"]
 [connection signal="body_entered" from="SpaceCollision" to="." method="_on_Space_entered"]
 [connection signal="body_exited" from="SpaceCollision" to="." method="_on_Space_exited"]
+[connection signal="timeout" from="SoundTimer" to="." method="_on_SoundTimer_timeout"]
