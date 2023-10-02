@@ -111,11 +111,11 @@ func _on_PortalToGame_body_entered(_body) -> void:
 func _on_StartArea_body_exited(_body) -> void:
 	space_mode = SPACE_NORMAL
 
-func _on_StartArea_body_entered(body: Node) -> void:
+func _on_StartArea_body_entered(_body: Node) -> void:
 	space_mode = SPACE_FOLLOW
 
-func _on_UncomfortArea_body_entered(body: Node) -> void:
+func _on_UncomfortArea_body_entered(_body: Node) -> void:
 	space_mode = SPACE_STOP
 
-func _on_UncomfortArea_body_exited(body: Node) -> void:
+func _on_UncomfortArea_body_exited(_body: Node) -> void:
 	space_mode = SPACE_NORMAL

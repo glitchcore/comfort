@@ -3,7 +3,7 @@ onready var detector = get_node("/root/BaseLevel/SpaceDetector")
 onready var space_wall = get_node("/root/BaseLevel/SpaceWall")
 onready var store = get_node("/root/BaseLevel/Store")
 
-const SIZE = [160, 100]
+const SIZE = [160, 120]
 const UPDATE_SIZE = 20
 export var space_size = 5
 export var noise_amount = 0.03
