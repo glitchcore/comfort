@@ -71,7 +71,7 @@ points = PoolVector2Array( 0, 0, 40, 0, 40, 40, 0, 40 )
 1/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 2832.61, 312.438 )
+extents = Vector2( 2695.92, 312.438 )
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 354, 261.125 )
@@ -260,17 +260,15 @@ position = Vector2( 126, -1342 )
 [node name="GameAreas" type="Node" parent="."]
 
 [node name="StartArea" type="Area2D" parent="GameAreas"]
-visible = false
 position = Vector2( -4.74976, -1058 )
 collision_layer = 32
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameAreas/StartArea"]
-position = Vector2( 2885.53, -561.438 )
+position = Vector2( 2748.83, -561.438 )
 shape = SubResource( 6 )
 
 [node name="UncomfortArea" type="Area2D" parent="GameAreas"]
-visible = false
 position = Vector2( -4.74976, -1058 )
 collision_layer = 32
 collision_mask = 2
@@ -402,7 +400,7 @@ margin_right = 4338.0
 margin_bottom = -1777.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
 custom_fonts/font = SubResource( 8 )
-text = "Your comfort zone follow you..."
+text = "Your comfort zone follows you..."
 
 [node name="Label5" type="Label" parent="TutorialStatic"]
 margin_left = 4864.0
@@ -427,10 +425,10 @@ align = 1
 valign = 1
 
 [node name="Label7" type="Label" parent="TutorialStatic"]
-margin_left = 5175.0
-margin_top = -965.0
-margin_right = 5405.0
-margin_bottom = -934.0
+margin_left = 4752.0
+margin_top = -1030.0
+margin_right = 4982.0
+margin_bottom = -999.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "...not for long"
@@ -454,4 +452,8 @@ custom_fonts/font = SubResource( 8 )
 text = "ENEMIES!"
 
 [connection signal="body_entered" from="PortalToGame" to="Store" method="_on_PortalToGame_body_entered"]
+[connection signal="body_entered" from="GameAreas/StartArea" to="Store" method="_on_StartArea_body_entered"]
 [connection signal="body_exited" from="GameAreas/StartArea" to="Store" method="_on_StartArea_body_exited"]
+[connection signal="body_entered" from="GameAreas/UncomfortArea" to="Store" method="_on_UncomfortArea_body_entered"]
+[connection signal="body_exited" from="GameAreas/UncomfortArea" to="Store" method="_on_UncomfortArea_body_exited"]
+[connection signal="body_entered" from="GameAreas/WinArea" to="Store" method="_on_WinArea_body_entered"]

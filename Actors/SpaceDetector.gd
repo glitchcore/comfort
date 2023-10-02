@@ -10,7 +10,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var move_direction = (player.position - self.position)
 	var _velocity = move_and_collide(
-		move_direction * store.get_space_speed() * delta)
+		store.get_space_speed(move_direction) * delta)
 
 func _on_ForceMove(new_position) -> void:
 	position = new_position

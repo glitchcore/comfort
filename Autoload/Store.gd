@@ -1,5 +1,11 @@
 extends Node
 
+enum {
+	SPACE_FOLLOW,
+	SPACE_NORMAL,
+	SPACE_STOP
+}
+
 signal update_hp(value, damage)
 signal update_comfort(value)
 signal killed
@@ -12,19 +18,40 @@ const HP_MAX = 100
 const BAD_ZONE_DAMAGE = 2
 const GOOD_ZONE_DAMAGE = -1
 const ENEMY_DAMAGE_LEVEL = 50
+const ZONE_HP_THRESHOLD = 20
 
 # game globals
-export var space_speed = 0.5
+export var space_speed = 2
+export var space_threshold = 500
 export var player_speed = 1000
 export var player_comfort_speed = 300
+export var jump_amount = 2000
 
 # game state
 var hp = HP_MAX setget set_health
 var in_comfort_zone = true
 var player_alive = true
+var space_mode = SPACE_FOLLOW
+var already_move = false
 
-func get_space_speed():
-	return space_speed
+func get_space_speed(move_direction: Vector2):
+	if space_mode == SPACE_FOLLOW:
+		return move_direction.normalized() * max(
+			player_comfort_speed, jump_amount)
+	elif space_mode == SPACE_NORMAL:
+		if in_comfort_zone:
+			already_move = false
+		if move_direction.length() > space_threshold:
+			already_move = true
+		if (
+			move_direction.length() > space_threshold or
+			in_comfort_zone or already_move
+		):
+			return move_direction * space_speed
+		else:
+			 return Vector2.ZERO
+	elif space_mode == SPACE_STOP:
+		return Vector2.ZERO
 
 func get_player_speed():
 	return (
@@ -36,7 +63,8 @@ func calculate_hp():
 	if in_comfort_zone:
 		take_damage(GOOD_ZONE_DAMAGE)
 	else:
-		take_damage(BAD_ZONE_DAMAGE)
+		if hp > ZONE_HP_THRESHOLD:
+			take_damage(BAD_ZONE_DAMAGE)
 
 func _physics_process(_delta: float) -> void:
 	if not player_alive:
@@ -81,4 +109,13 @@ func _on_PortalToGame_body_entered(_body) -> void:
 	emit_signal("force_move", START_GAME_POSITION)
 
 func _on_StartArea_body_exited(_body) -> void:
-	pass # Replace with function body.
+	space_mode = SPACE_NORMAL
+
+func _on_StartArea_body_entered(body: Node) -> void:
+	space_mode = SPACE_FOLLOW
+
+func _on_UncomfortArea_body_entered(body: Node) -> void:
+	space_mode = SPACE_STOP
+
+func _on_UncomfortArea_body_exited(body: Node) -> void:
+	space_mode = SPACE_NORMAL
