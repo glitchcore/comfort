@@ -42,7 +42,10 @@ func _process(_delta: float) -> void:
 func _on_Area2D_body_entered(body: Node) -> void:
 	if body.name == "Player":
 		emit_signal("enemy_collide")
-		queue_free()
+		$Particles2D.emitting = true
+		$Enemy.visible = false
+		set_collision_mask_bit(ENEMY_WALLS, false)
+		$KillTimer.start()
 
 func _on_UpdateComfort(comfort):
 	if comfort:
@@ -52,3 +55,5 @@ func _on_UpdateComfort(comfort):
 		self.z_index = 5
 		# set_collision_mask_bit(ENEMY_WALLS, false)
 
+func _on_Timer_timeout() -> void:
+	queue_free()

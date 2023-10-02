@@ -68,9 +68,9 @@ func _physics_process(delta: float) -> void:
 	var prev_velocity = velocity
 	
 	if velocity.x > 0:
-		$PlayerSprite.flip_h = false
+		$Sprite.flip_h = false
 	if velocity.x < 0:
-		$PlayerSprite.flip_h = true
+		$Sprite.flip_h = true
 		
 	velocity = move_and_slide(
 		velocity,
