@@ -3,8 +3,6 @@ extends KinematicBody2D
 signal update_comfort(value)
 
 var velocity = Vector2.ZERO
-export var speed = 1000
-export var comfort_speed = 300
 
 export var gravity = 5000
 export var jump_amount = 2000
@@ -23,7 +21,7 @@ var gravity_direction = Vector2(0, 1)
 
 func calculate_ui_movement(delta: float):
 	var input = Input.get_axis("ui_left", "ui_right")
-	input *= comfort_speed if store.in_comfort_zone else speed
+	input *= store.get_player_speed()
 	
 	var slide_amount = 0
 	if abs(slide_direction.x) > abs(slide_direction.y):
