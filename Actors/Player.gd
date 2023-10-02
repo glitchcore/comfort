@@ -105,6 +105,6 @@ func _on_PlayerData_killed() -> void:
 	space.visible = false
 
 
-func _on_PortalToGame_body_entered(body: Node) -> void:
+func _on_PortalToGame_body_entered(_body: Node) -> void:
 	print("AAAAAAAAAAAAAAAAA")
 	position = start_game
