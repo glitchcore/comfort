@@ -361,10 +361,10 @@ custom_fonts/font = SubResource( 8 )
 text = "go tutorial"
 
 [node name="Label1" type="Label" parent="TutorialStatic"]
-margin_left = 3528.0
-margin_top = -1762.0
-margin_right = 3932.0
-margin_bottom = -1731.0
+margin_left = 2768.0
+margin_top = -1752.0
+margin_right = 3172.0
+margin_bottom = -1721.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "You are in the comfort zone"
@@ -376,7 +376,7 @@ margin_right = 682.0
 margin_bottom = -1519.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
 custom_fonts/font = SubResource( 8 )
-text = "Press <- and -> to move"
+text = "Press < and > to move"
 
 [node name="Label3" type="Label" parent="TutorialStatic"]
 margin_left = 1895.0
@@ -388,31 +388,35 @@ custom_fonts/font = SubResource( 8 )
 text = "Press space to jump"
 
 [node name="Label4" type="Label" parent="TutorialStatic"]
-margin_left = 4828.0
-margin_top = -1884.0
-margin_right = 5302.0
-margin_bottom = -1853.0
+margin_left = 3864.0
+margin_top = -1808.0
+margin_right = 4338.0
+margin_bottom = -1777.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "Your comfort zone follow you..."
 
 [node name="Label5" type="Label" parent="TutorialStatic"]
-margin_left = 5453.0
-margin_top = -1543.0
-margin_right = 5709.0
-margin_bottom = -1512.0
+margin_left = 4864.0
+margin_top = -1880.0
+margin_right = 5120.0
+margin_bottom = -1849.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "...ALMOST forewer"
 
 [node name="Label6" type="Label" parent="TutorialStatic"]
-margin_left = 5074.0
-margin_top = -951.0
-margin_right = 5709.0
-margin_bottom = -920.0
+margin_left = 5464.0
+margin_top = -1664.0
+margin_right = 5696.0
+margin_bottom = -1565.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
 custom_fonts/font = SubResource( 8 )
-text = "Sometimes you have to leave comfort zone..."
+text = "Sometimes you
+have to leave
+comfort zone..."
+align = 1
+valign = 1
 
 [node name="Label7" type="Label" parent="TutorialStatic"]
 margin_left = 3814.0
