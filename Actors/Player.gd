@@ -93,7 +93,8 @@ func _on_Area2D_body_exited(_body: Node) -> void:
 
 
 func _on_StartArea_body_exited(_body: Node) -> void:
-	pass
+	print("go out comfort")
+	#pass
 
 
 func _on_PlayerData_killed() -> void:
