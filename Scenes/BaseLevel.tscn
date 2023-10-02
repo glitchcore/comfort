@@ -284,9 +284,11 @@ position = Vector2( 507, -1409 )
 
 [node name="PortalToGame2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 2476, -101 )
+collision_layer = 32
 
 [node name="PortalToGame" parent="." instance=ExtResource( 11 )]
 position = Vector2( 126, -1342 )
+collision_layer = 32
 
 [node name="GameAreas" type="Node" parent="."]
 
