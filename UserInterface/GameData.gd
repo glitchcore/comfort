@@ -7,6 +7,7 @@ const LOW_HEALTH = 40
 
 func _ready() -> void:
 	store.connect("update_hp", self, "_on_UpdateHp")
+	store.connect("win", self, "_on_Win")
 	update_hp(store.hp, 0)
 
 func update_hp(hp, damage):
@@ -24,3 +25,7 @@ func update_hp(hp, damage):
 
 func _on_UpdateHp(hp, damage):
 	update_hp(hp, damage)
+
+func _on_Win():
+	$Health.set("custom_colors/font_color", Color("45b108"))
+	$Health.text = "Your Win!\nLeave your comfort zone"

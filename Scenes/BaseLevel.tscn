@@ -310,6 +310,8 @@ shape = SubResource( 9 )
 
 [node name="WinArea" type="Area2D" parent="GameAreas"]
 position = Vector2( -4.74976, -1058 )
+collision_layer = 32
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameAreas/WinArea"]
 position = Vector2( 166, -2815 )

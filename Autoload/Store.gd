@@ -34,6 +34,8 @@ var in_comfort_zone = true
 var player_alive = true
 var space_mode = SPACE_FOLLOW
 var already_move = false
+var death_time = 0
+var win = false
 
 func get_space_speed(move_direction: Vector2):
 	if space_mode == SPACE_FOLLOW:
@@ -70,7 +72,10 @@ func calculate_hp():
 			take_damage(0)
 
 func _physics_process(_delta: float) -> void:
-	if not player_alive:
+	if win == true:
+		return
+	
+	if not player_alive and Time.get_ticks_msec() > (death_time + 1000):
 		if Input.is_action_just_pressed("jump"):
 			var _r = get_tree().reload_current_scene()
 
@@ -122,6 +127,9 @@ func _on_UncomfortArea_body_entered(_body: Node) -> void:
 func _on_UncomfortArea_body_exited(_body: Node) -> void:
 	space_mode = SPACE_NORMAL
 
-func _on_WinArea_body_entered() -> void:
+func _on_WinArea_body_entered(_body) -> void:
+	print("you win")
+	death_time = Time.get_ticks_msec()
 	emit_signal("win")
+	win = true
 	player_alive = false
