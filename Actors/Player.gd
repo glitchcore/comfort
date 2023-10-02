@@ -11,7 +11,6 @@ export var jump_amount = 2000
 export var acceleration = 8000
 
 onready var store = get_node("/root/BaseLevel/Store")
-onready var sprite = get_node("./Sprite")
 
 func _ready() -> void:
 	store.connect("force_move", self, "_on_ForceMove")
@@ -60,9 +59,9 @@ func _physics_process(delta: float) -> void:
 	var prev_velocity = velocity
 	
 	if velocity.x > 0:
-		sprite.flip_h = false
+		$PlayerSprite.flip_h = false
 	if velocity.x < 0:
-		sprite.flip_h = true
+		$PlayerSprite.flip_h = true
 		
 	velocity = move_and_slide(
 		velocity,

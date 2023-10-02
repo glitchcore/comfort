@@ -1,19 +1,28 @@
 extends Node
 
-signal update_hp(value)
+signal update_hp(value, damage)
 signal update_comfort(value)
 signal killed
 signal force_move(new_position)
 
+# game config
 const START_GAME_POSITION = Vector2(241, -2397)
 
 const HP_MAX = 100
 const BAD_ZONE_DAMAGE = 2
 const GOOD_ZONE_DAMAGE = -1
 const ENEMY_DAMAGE_LEVEL = 50
+
+# game globals
+export var space_speed = 0.5
+
+# game state
 var hp = HP_MAX setget set_health
 var in_comfort_zone = true
 var player_alive = true
+
+func get_space_speed():
+	return space_speed
 
 func calculate_hp():
 	if in_comfort_zone:
@@ -21,13 +30,10 @@ func calculate_hp():
 	else:
 		take_damage(BAD_ZONE_DAMAGE)
 
-func reset() -> void:
-	hp = HP_MAX
-	in_comfort_zone = true
-	player_alive = true
-
 func _physics_process(_delta: float) -> void:
-	pass
+	if not player_alive:
+		if Input.is_action_just_pressed("jump"):
+			var _r = get_tree().reload_current_scene()
 
 func set_health(value: float):
 	hp = value
@@ -42,7 +48,7 @@ func take_damage(impact: int):
 	hp = clamp(hp, 0, HP_MAX)
 	
 	if prev_hp != hp:
-		emit_signal("update_hp", hp)
+		emit_signal("update_hp", hp, damage)
 
 	if hp <= 0:
 		# for killed animation

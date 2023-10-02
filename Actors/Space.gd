@@ -5,7 +5,8 @@ onready var store = get_node("/root/BaseLevel/Store")
 
 const SIZE = [160, 100]
 const UPDATE_SIZE = 20
-export var space_size = 6
+export var space_size = 5
+export var noise_amount = 0.05
 
 var comfort_amount = 0
 var target_comfort_amount = 0
@@ -40,7 +41,10 @@ func update_cell(uv: Vector2, center: Vector2, old):
 	)
 	
 	var res = 0
-	res += clamp(space_size - (uv * (Vector2.ONE + r * 0.1) - center).length(), 0, 1)
+	res += clamp(
+		space_size - (uv * (Vector2.ONE + r * noise_amount) - center).length(),
+		0, 1
+	)
 	# res = lerp(res, old[uv.x][uv.y], 0.2)
 	res += old[uv.x][uv.y] * 0.9
 	

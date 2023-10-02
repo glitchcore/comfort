@@ -13,11 +13,18 @@ var direction = 1
 export var gravity = 100
 
 func _ready() -> void:
+	randomize()
 	store.connect("update_comfort", self, "_on_UpdateComfort")
 	var _r = connect("enemy_collide", store, "on_EnemyCollide")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if (
+		Time.get_ticks_msec() > rand_range(0, 1000) and
+		$Animation.current_animation == ""
+	):
+		$Animation.play("enemy_run")
+	
 	if Time.get_ticks_msec() < 1000:
 		return
 	
