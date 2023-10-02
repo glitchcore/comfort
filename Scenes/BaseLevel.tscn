@@ -395,10 +395,10 @@ custom_fonts/font = SubResource( 8 )
 text = "Press space to jump"
 
 [node name="Label4" type="Label" parent="TutorialStatic"]
-margin_left = 3864.0
-margin_top = -1808.0
-margin_right = 4338.0
-margin_bottom = -1777.0
+margin_left = 3866.0
+margin_top = -1737.0
+margin_right = 4356.0
+margin_bottom = -1706.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "Your comfort zone follows you..."
@@ -513,6 +513,98 @@ rotation = 3.14159
 [node name="Arrow29" parent="LevelHints" instance=ExtResource( 13 )]
 position = Vector2( 2293, -2983 )
 rotation = 3.14159
+
+[node name="Arrow30" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 2912, -3094 )
+rotation = 3.14159
+
+[node name="Arrow31" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 2913, -3175 )
+rotation = 3.14159
+
+[node name="Arrow32" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 2914, -3259 )
+rotation = 3.14159
+
+[node name="Arrow33" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 3441, -2494 )
+rotation = 3.14159
+
+[node name="Arrow34" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 3442, -2575 )
+rotation = 3.14159
+
+[node name="Arrow35" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 3443, -2659 )
+rotation = 3.14159
+
+[node name="Arrow36" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 3746, -3291 )
+rotation = 3.14159
+
+[node name="Arrow37" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 3747, -3372 )
+rotation = 3.14159
+
+[node name="Arrow38" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 3748, -3456 )
+rotation = 3.14159
+
+[node name="Arrow42" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 4382, -3509 )
+rotation = 3.14159
+
+[node name="Arrow39" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 4238, -2664 )
+rotation = 1.5708
+
+[node name="Arrow40" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 4239, -2745 )
+rotation = 1.5708
+
+[node name="Arrow41" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 4240, -2829 )
+rotation = 1.5708
+
+[node name="Arrow44" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 5034, -2565 )
+
+[node name="Arrow45" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 5034, -2649 )
+
+[node name="Arrow46" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 5035, -2733 )
+
+[node name="Arrow47" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 4819, -3060 )
+
+[node name="Arrow48" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 4820, -3141 )
+
+[node name="Arrow49" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 4821, -3225 )
+
+[node name="Arrow50" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 4675, -4115 )
+
+[node name="Arrow51" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 4676, -4196 )
+
+[node name="Arrow52" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 4677, -4280 )
+
+[node name="Arrow53" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 3482, -4103 )
+
+[node name="Arrow54" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 3483, -4184 )
+
+[node name="Arrow55" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 3484, -4268 )
+
+[node name="Arrow43" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 4824, -3748 )
+rotation = 1.5708
 
 [connection signal="body_entered" from="PortalToGame" to="Store" method="_on_PortalToGame_body_entered"]
 [connection signal="body_entered" from="GameAreas/StartArea" to="Store" method="_on_StartArea_body_entered"]
