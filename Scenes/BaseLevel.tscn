@@ -102,7 +102,7 @@ margin_top = 2.0
 margin_bottom = 38.6
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 2770, -2235 )
+position = Vector2( 3429, -1962 )
 scale = Vector2( 3.29126, 5757 )
 z_index = -10
 z_as_relative = false
@@ -452,6 +452,68 @@ margin_bottom = -1037.0
 custom_colors/font_color = Color( 0.027451, 0.521569, 0.0588235, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "ENEMIES!"
+
+[node name="LevelHints" type="Node2D" parent="."]
+
+[node name="Arrow15" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 474, -2439 )
+rotation = 3.14159
+
+[node name="Arrow16" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 475, -2520 )
+rotation = 3.14159
+
+[node name="Arrow17" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 475, -2601 )
+rotation = 3.14159
+
+[node name="Arrow18" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 1124, -2672 )
+rotation = 3.14159
+
+[node name="Arrow19" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 1125, -2753 )
+rotation = 3.14159
+
+[node name="Arrow20" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 1125, -2834 )
+rotation = 3.14159
+
+[node name="Arrow21" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 1736, -2439 )
+rotation = 3.14159
+
+[node name="Arrow22" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 1737, -2520 )
+rotation = 3.14159
+
+[node name="Arrow23" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 1737, -2601 )
+rotation = 3.14159
+
+[node name="Arrow24" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 1725, -3030 )
+rotation = 3.14159
+
+[node name="Arrow25" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 1726, -3111 )
+rotation = 3.14159
+
+[node name="Arrow26" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 1726, -3192 )
+rotation = 3.14159
+
+[node name="Arrow27" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 2291, -2818 )
+rotation = 3.14159
+
+[node name="Arrow28" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 2292, -2899 )
+rotation = 3.14159
+
+[node name="Arrow29" parent="LevelHints" instance=ExtResource( 13 )]
+position = Vector2( 2293, -2983 )
+rotation = 3.14159
 
 [connection signal="body_entered" from="PortalToGame" to="Store" method="_on_PortalToGame_body_entered"]
 [connection signal="body_exited" from="GameAreas/StartArea" to="Store" method="_on_StartArea_body_exited"]
