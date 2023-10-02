@@ -10,7 +10,7 @@ func update_hp(hp):
 	if hp > 0:
 		$Health.text = "Health: %s" % hp
 	else:
-		$Health.text = "You died"
+		$Health.text = "You died\nPress jump to play again"
 
 func _on_UpdateHp(hp):
 	update_hp(hp)

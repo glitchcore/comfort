@@ -5,6 +5,8 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
+outline_size = 2
+outline_color = Color( 1, 0.635294, 0.635294, 1 )
 font_data = ExtResource( 2 )
 
 [node name="GameData" type="Control"]
@@ -20,10 +22,11 @@ script = ExtResource( 1 )
 anchor_left = 0.961
 anchor_right = 1.0
 anchor_bottom = 0.047
-margin_left = -394.064
-margin_top = 28.0
-margin_right = -362.0
-margin_bottom = 15.8
+margin_left = -810.064
+margin_top = 12.0
+margin_right = -26.0
+margin_bottom = 191.8
 custom_colors/font_color = Color( 0.921569, 0.0862745, 0.0862745, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Health: %s"
+align = 2

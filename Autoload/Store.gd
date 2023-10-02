@@ -21,13 +21,10 @@ func calculate_hp():
 	else:
 		take_damage(BAD_ZONE_DAMAGE)
 
-func reset() -> void:
-	hp = HP_MAX
-	in_comfort_zone = true
-	player_alive = true
-
 func _physics_process(_delta: float) -> void:
-	pass
+	if not player_alive:
+		if Input.is_action_just_pressed("jump"):
+			var _r = get_tree().reload_current_scene()
 
 func set_health(value: float):
 	hp = value
