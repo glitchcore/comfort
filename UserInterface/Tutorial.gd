@@ -13,7 +13,7 @@ var step_number = 0
 var current_area = WELCOM_AREA
 
 var messages = [
-	#[HELLO_AREA, ""],
+	[HELLO_AREA, ""],
 	[WELCOM_AREA, "You are in the comfort zone"],
 	[WELCOM_AREA, "Press <- and -> to move"],
 	[WELCOM_AREA, "Press space to jump"],
