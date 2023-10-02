@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal update_comfort(value)
+
 var velocity = Vector2.ZERO
 export var speed = 1000
 export var comfort_speed = 300
@@ -8,24 +10,22 @@ export var gravity = 5000
 export var jump_amount = 2000
 export var acceleration = 8000
 
-var player_alive = true
 var start_game = Vector2(241, -2397)
 
-onready var player_data = get_node("/root/BaseLevel/PlayerData")
-onready var space = get_node("/root/BaseLevel/Space")
+onready var store = get_node("/root/BaseLevel/Store")
 
 func _ready() -> void:
-	pass
+	store.connect("portal_to_game", self, "_on_PortalToGame")
+	store.connect("killed", self, "_on_Killed")
+	store.connect("update_comfort", self, "_on_Player_comfort")
+	var _r = connect("update_comfort", store, "_on_UpdateComfort")
 
 var slide_direction = Vector2(1, 0)
 var gravity_direction = Vector2(0, 1)
 
-signal stomped
-signal is_comfort(value)
-
 func calculate_ui_movement(delta: float):
 	var input = Input.get_axis("ui_left", "ui_right")
-	input *= comfort_speed if player_data.in_comfort_zone else speed
+	input *= comfort_speed if store.in_comfort_zone else speed
 	
 	var slide_amount = 0
 	if abs(slide_direction.x) > abs(slide_direction.y):
@@ -48,9 +48,8 @@ func calculate_jump():
 		if abs(gravity_direction.y) > 0:
 			velocity.y = 0
 
-
 func _physics_process(delta: float) -> void:
-	if not player_alive:
+	if not store.player_alive:
 		return
 	
 	calculate_ui_movement(delta)
@@ -72,39 +71,26 @@ func _physics_process(delta: float) -> void:
 	var dv = (prev_velocity - velocity).length()
 	
 	if dv > gravity * delta * 2:
-		emit_signal("stomped")
+		$MainCamera.set_shake(true)
 
-
-func _on_Area2D_body_entered(_body: Node) -> void:
-	if not player_alive:
-		return
-	player_data.in_comfort_zone = false
-	$ComfortMusic.volume_db = -80
-	$NonComfortMusic.volume_db = 0
-	emit_signal("is_comfort", player_data.in_comfort_zone)
-
-func _on_Area2D_body_exited(_body: Node) -> void:
-	if not player_alive:
-		return
+func _on_Player_comfort(comfort):
+	if comfort:
+		$ComfortMusic.volume_db = 0
+		$NonComfortMusic.volume_db = -80
+	else:
+		$ComfortMusic.volume_db = -80
+		$NonComfortMusic.volume_db = 0
 	
-	player_data.in_comfort_zone = true
-	$ComfortMusic.volume_db = 0
-	$NonComfortMusic.volume_db = -80
-	emit_signal("is_comfort", player_data.in_comfort_zone)
+func _on_Space_entered(_body: Node) -> void:
+	emit_signal("update_comfort", false)
 
+func _on_Space_exited(_body: Node) -> void:
+	emit_signal("update_comfort", true)
 
-func _on_StartArea_body_exited(_body: Node) -> void:
-	print("go out comfort")
-	#pass
-
-
-func _on_PlayerData_killed() -> void:
+func _on_Killed() -> void:
 	$ComfortMusic.volume_db = -80
 	$NonComfortMusic.volume_db = 10
-	player_alive = false
-	space.visible = false
 
-
-func _on_PortalToGame_body_entered(_body: Node) -> void:
-	print("AAAAAAAAAAAAAAAAA")
+func _on_PortalToGame() -> void:
+	print("player going to game")
 	position = start_game

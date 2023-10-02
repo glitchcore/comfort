@@ -1,14 +1,12 @@
 extends Control
 
-onready var player_data = get_node("/root/BaseLevel/PlayerData")
+onready var store = get_node("/root/BaseLevel/Store")
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-# PlayerData.connect("damaged", self, "update_interface")
-	update_interface()
+	store.connect("update_hp", self, "update_hp")
 
-func update_interface():
-	if player_data.hp > 0:
-		$Health.text = "Health: %s" % player_data.hp
+func update_hp(hp):
+	if hp > 0:
+		$Health.text = "Health: %s" % hp
 	else:
 		$Health.text = "You died"

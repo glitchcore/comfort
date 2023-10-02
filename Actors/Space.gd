@@ -1,6 +1,7 @@
 extends TileMap
 onready var detector = get_node("/root/BaseLevel/SpaceDetector")
 onready var space_wall = get_node("/root/BaseLevel/SpaceWall")
+onready var store = get_node("/root/BaseLevel/Store")
 
 const SIZE = [160, 100]
 const UPDATE_SIZE = 20
@@ -8,6 +9,17 @@ export var space_size = 6
 
 var comfort_amount = 0
 var target_comfort_amount = 0
+
+func _ready() -> void:
+	randomize()
+	noise.period = 1
+	noise.seed = randi()
+	
+	for x in range(SIZE[0]):
+		for y in range(SIZE[1]):
+			self.set_cell(x, -y, 0)
+			
+	store.connect("killed", self, "_on_Killed")
 
 func create_state():
 	var res = []
@@ -77,15 +89,6 @@ func display_state(center):
 				space_wall.set_cell(x, -y, 0)
 				self.set_cell(x, -y, -1)
 
-func _ready() -> void:
-	randomize()
-	noise.period = 1
-	noise.seed = randi()
-	
-	for x in range(SIZE[0]):
-		for y in range(SIZE[1]):
-			self.set_cell(x, -y, 0)
-
 var target_space_size = space_size
 const SPACE_STEP = 2
 const SPACE_MIN = 4
@@ -97,7 +100,7 @@ func _process(delta: float) -> void:
 	self.material.set_shader_param("time", Time.get_ticks_msec() / 1000.0)
 	comfort_amount = move_toward(
 		comfort_amount,
-		target_comfort_amount,
+		1.0 if store.in_comfort_zone else 0.0,
 		delta * 8
 	)
 	self.material.set_shader_param("comfort_amount", comfort_amount)
@@ -125,7 +128,6 @@ func _on_SpaceTimer_timeout() -> void:
 	state = update_state(state, detector_position)
 	
 	display_state(detector_position)
-
-
-func _on_Player_is_comfort(value) -> void:
-	target_comfort_amount = 1.0 if value else 0.0
+	
+func _on_Killed():
+	self.visible = false

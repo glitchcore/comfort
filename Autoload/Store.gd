@@ -1,16 +1,17 @@
 extends Node
- 
-#signal health_change
 
-signal damaged(by)
-signal killed()
+signal update_hp(value)
+signal update_comfort(value)
+signal killed
+signal portal_to_game
 
 const HP_MAX = 100
 const BAD_ZONE_DAMAGE = 2
 const GOOD_ZONE_DAMAGE = -1
+const ENEMY_DAMAGE_LEVEL = 50
 var hp = HP_MAX setget set_health
 var in_comfort_zone = true
-
+var player_alive = true
 
 func calculate_hp():
 	if in_comfort_zone:
@@ -21,31 +22,47 @@ func calculate_hp():
 func reset() -> void:
 	hp = HP_MAX
 	in_comfort_zone = true
+	player_alive = true
 
 func _physics_process(_delta: float) -> void:
-	#calculate_hp(delta)
 	pass
 
 func set_health(value: float):
 	hp = value
-	#in_comfort_zone = true
-
 
 func take_damage(impact: int):
+	if not player_alive:
+		return
+	
 	var damage = int(HP_MAX * impact / 100.0)
 	var prev_hp = hp
 	hp -= damage
 	hp = clamp(hp, 0, HP_MAX)
-
+	
 	if prev_hp != hp:
-		# for damage animation
-		emit_signal("damaged")
-		pass
+		emit_signal("update_hp", hp)
 
 	if hp <= 0:
 		# for killed animation
 		emit_signal("killed")
-
+		player_alive = false
 
 func _on_Timer_timeout() -> void:
 	calculate_hp()
+
+func _on_UpdateComfort(comfort):
+	if not player_alive:
+		return
+	
+	in_comfort_zone = comfort
+	emit_signal("update_comfort", comfort)
+	
+func on_EnemyCollide():
+	if not in_comfort_zone:
+		take_damage(ENEMY_DAMAGE_LEVEL)
+
+func _on_PortalToGame_body_entered(_body) -> void:
+	emit_signal("portal_to_game")
+
+func _on_StartArea_body_exited(_body) -> void:
+	pass # Replace with function body.
