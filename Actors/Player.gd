@@ -10,12 +10,11 @@ export var gravity = 5000
 export var jump_amount = 2000
 export var acceleration = 8000
 
-var start_game = Vector2(241, -2397)
-
 onready var store = get_node("/root/BaseLevel/Store")
+onready var sprite = get_node("./Sprite")
 
 func _ready() -> void:
-	store.connect("portal_to_game", self, "_on_PortalToGame")
+	store.connect("force_move", self, "_on_ForceMove")
 	store.connect("killed", self, "_on_Killed")
 	store.connect("update_comfort", self, "_on_Player_comfort")
 	var _r = connect("update_comfort", store, "_on_UpdateComfort")
@@ -59,6 +58,12 @@ func _physics_process(delta: float) -> void:
 	velocity += gravity * gravity_direction * delta
 	
 	var prev_velocity = velocity
+	
+	if velocity.x > 0:
+		sprite.flip_h = false
+	if velocity.x < 0:
+		sprite.flip_h = true
+		
 	velocity = move_and_slide(
 		velocity,
 		-gravity_direction, # up dir
@@ -91,6 +96,6 @@ func _on_Killed() -> void:
 	$ComfortMusic.volume_db = -80
 	$NonComfortMusic.volume_db = 10
 
-func _on_PortalToGame() -> void:
-	print("player going to game")
-	position = start_game
+func _on_ForceMove(new_position) -> void:
+	print("player going to new position")
+	position = new_position

@@ -3,7 +3,9 @@ extends Node
 signal update_hp(value)
 signal update_comfort(value)
 signal killed
-signal portal_to_game
+signal force_move(new_position)
+
+const START_GAME_POSITION = Vector2(241, -2397)
 
 const HP_MAX = 100
 const BAD_ZONE_DAMAGE = 2
@@ -62,7 +64,7 @@ func on_EnemyCollide():
 		take_damage(ENEMY_DAMAGE_LEVEL)
 
 func _on_PortalToGame_body_entered(_body) -> void:
-	emit_signal("portal_to_game")
+	emit_signal("force_move", START_GAME_POSITION)
 
 func _on_StartArea_body_exited(_body) -> void:
 	pass # Replace with function body.
