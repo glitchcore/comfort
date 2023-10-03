@@ -20,13 +20,13 @@ const START_GAME_POSITION = Vector2(241, -2397)
 const HP_MAX = 100
 const BAD_ZONE_DAMAGE = 2
 const GOOD_ZONE_DAMAGE = -1
-const ENEMY_DAMAGE_LEVEL = 50
-const ZONE_HP_THRESHOLD = 20
+const ENEMY_DAMAGE_LEVEL = 33
+const ZONE_HP_THRESHOLD = 35
 
 # game globals
 export var space_speed = 2
 export var space_threshold = 700
-export var player_speed = 1000
+export var player_speed = 700
 export var player_comfort_speed = 300
 export var jump_amount = 2000
 

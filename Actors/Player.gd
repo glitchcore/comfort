@@ -5,7 +5,7 @@ signal update_comfort(value)
 var velocity = Vector2.ZERO
 
 export var gravity = 5000
-export var acceleration = 8000
+export var acceleration = 10000
 
 var comfort_amount = 1.0
 var target_comfort_amount = 1.0
@@ -99,7 +99,7 @@ func _on_Space_exited(_body: Node) -> void:
 
 func _on_Killed() -> void:
 	$ComfortMusic.volume_db = -80
-	$NonComfortMusic.volume_db = 10
+	$NonComfortMusic.volume_db = 0
 	
 func _on_Win():
 	$ComfortMusic.volume_db = 0
